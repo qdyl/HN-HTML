@@ -1,0 +1,218 @@
+/* 重置样式*/
+@font-face {
+  font-family: Yahei;
+  src: url('../fonts/MicrosoftYaHei.ttf');
+}
+html,
+body {
+  min-width: 1199px;
+  height: 100%;
+  font-family: Yahei;
+}
+.container {
+  min-width: 992px;
+}
+ul,
+ol,
+li {
+  padding: 0;
+  list-style-type: none;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+.color666 {
+  color: #666 !important;
+}
+.color333 {
+  color: #333 !important;
+}
+.color999 {
+  color: #999 !important;
+}
+.none {
+  display: none;
+}
+/* 公用头部*/
+.common-header {
+  /*logo + 搜索框 */
+  /* 导航*/
+}
+.common-header .header-logo-search {
+  padding: 20px 0;
+  background-color: #fff;
+}
+.common-header .header-logo .logo-img {
+  margin: -12px 8px 0 0;
+  width: 55px;
+  height: 60px;
+  vertical-align: middle;
+}
+.common-header .header-logo .logo-text {
+  color: #d71618;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+.common-header .header-search {
+  margin-top: 12px;
+}
+.common-header .header-search .search-input {
+  height: 30px;
+  -webkit-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.13);
+  -moz-box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.13);
+  box-shadow: 2px 2px 4px 0px rgba(0, 0, 0, 0.13);
+  background-color: #f7f7f7;
+}
+.common-header .header-search .search-icon {
+  width: 36px;
+  border: 0;
+  padding: 0!important;
+  background: #07438a url("../images/search-icon2.png") no-repeat center center;
+  cursor: pointer;
+}
+.common-header .header-search .search-icon:active {
+  opacity: 0.9;
+}
+.common-header .header-nav {
+  height: 38px;
+  line-height: 38px;
+  background-color: #07438a;
+  font-size: 16px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+.common-header .header-nav .nav-item1 {
+  position: relative;
+  float: left;
+  width: 14.28%;
+  text-align: center;
+}
+.common-header .header-nav .nav-item1:active {
+  background-color: #06499d;
+}
+.common-header .header-nav .nav-item1:hover {
+  background-color: #06499d;
+}
+.common-header .header-nav .nav-item1:hover .sub-nav {
+  height: auto;
+  opacity: 1;
+}
+.common-header .header-nav a {
+  display: block;
+  color: #fff;
+}
+.common-header .header-nav .sub-nav {
+  width: 100%;
+  position: absolute;
+  z-index: 6;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.common-header .header-nav .nav-item2 {
+  height: 38px;
+  line-height: 38px;
+  background-color: #0f4b9a;
+}
+.common-header .header-nav .nav-item2:hover {
+  background-color: #1761bf;
+}
+/* 公共底部*/
+.common-footer {
+  height: 198px;
+  background-color: #07438a;
+}
+.common-footer .footer-select {
+  margin-top: 30px;
+}
+.common-footer .footer-select select {
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+}
+.common-footer .copyright {
+  margin-top: 30px;
+  color: #fff;
+}
+/* ‘更多’公用效果*/
+.common-more-link {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  text-align: right;
+  padding-right: 15px;
+  width: 100px;
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: #999999;
+}
+.common-more-link:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 14px;
+  width: 6px;
+  height: 9px;
+  background: url("../images/right-arrow1.png") no-repeat;
+}
+/* 蓝色横杠 + 更多：公用效果*/
+.commonIndex-title {
+  position: relative;
+  height: 35px;
+  line-height: 35px;
+  margin: 0 0 15px 0;
+  color: #333333;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-bottom: 2px solid #dddddd;
+}
+.commonIndex-title .buleBbar {
+  position: relative;
+  font-size: 16px;
+}
+.commonIndex-title .buleBbar:before {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  bottom: -7px;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: #07438a;
+}
+/* 公用列表*/
+.common-listsBox .common-listItem {
+  height: 32px;
+  line-height: 32px;
+  letter-spacing: 1px;
+}
+.common-listsBox .common-listItem .common-itemLink {
+  padding-left: 10px;
+  display: inline-block;
+  width: 75%;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #333333;
+  font-size: 16px;
+}
+.common-listsBox .common-listItem .push-time {
+  display: inline-block;
+  padding-right: 10px;
+  float: right;
+  font-size: 14px;
+  color: #333333;
+}
+/*# sourceMappingURL=global.css.map */

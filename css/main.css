@@ -1,0 +1,201 @@
+@import "global.css";
+/* 首页*/
+.index-main {
+  margin-top: 15px;
+  /* 轮播*/
+  /* 动态*/
+  /* 数据量展示*/
+  /* 事前公开*/
+  /* 事后公开*/
+  /* 城市月度数据排行 */
+}
+.index-main .slick-banner .banner-list {
+  position: relative;
+  height: 340px;
+  overflow: hidden;
+}
+.index-main .slick-banner .banner-list .img-link {
+  display: block;
+  height: 100%;
+}
+.index-main .slick-banner .banner-list .banner-img {
+  width: 100%;
+  height: 300px;
+}
+.index-main .slick-banner .banner-list .banner-info {
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 5;
+  width: 100%;
+  overflow: hidden;
+  padding-left: 5px;
+  background-color: #eeeeee;
+}
+.index-main .slick-banner .banner-list .banner-info-link {
+  width: 70%;
+  color: #666666;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.index-main .dynamic-tab {
+  position: relative;
+  height: 35px;
+  line-height: 35px;
+}
+.index-main .dynamic-tab:before {
+  position: absolute;
+  content: '';
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 2px;
+  background-color: #dddddd;
+}
+.index-main .dynamic-tab .dytab {
+  display: inline-block;
+  width: 175px;
+  text-align: center;
+  color: #333333;
+  font-size: 16px;
+  cursor: pointer;
+}
+.index-main .dynamic-tab .tab-on {
+  height: 34px;
+  color: #fff;
+  background-color: #07438a;
+}
+.index-main .province-dynamic {
+  margin-top: 10px;
+  height: 300px;
+}
+.index-main .province-dynamic .dynamic-item {
+  height: 37px;
+  line-height: 37px;
+  background-color: #f6f6f6;
+  border: dotted 1px #dddddd;
+}
+.index-main .province-dynamic .dynamic-item a {
+  padding-left: 15px;
+}
+.index-main .province-dynamic .dynamic-item .push-time {
+  padding-right: 15px;
+}
+.index-main .show-dataBar {
+  margin: 20px 0;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  font-size: 20px;
+  color: #ffffff;
+  background: #104687 url("../images/tool-banner.png") no-repeat left;
+}
+.index-main .beforehand-public .beforehand-public-lists {
+  margin-top: 15px;
+  padding-left: 8px;
+}
+.index-main .beforehand-public .beforehand-listItem {
+  position: relative;
+  float: left;
+  width: 20%;
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -ms-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+.index-main .beforehand-public .beforehand-listItem:hover {
+  -webkit-transform: scale(1.03);
+  -moz-transform: scale(1.03);
+  -ms-transform: scale(1.03);
+  -o-transform: scale(1.03);
+  transform: scale(1.03);
+}
+.index-main .beforehand-public .beforehand-listItem a {
+  position: relative;
+  display: block;
+  color: #252525;
+  font-size: 18px;
+}
+.index-main .beforehand-public .beforehand-listItem img {
+  width: 100%;
+  height: auto;
+}
+.index-main .beforehand-public .beforehand-listItem .listTit {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 8%;
+  text-align: center;
+}
+.index-main .afterwards-public {
+  /* 河南地图*/
+  /* table 表格*/
+}
+.index-main .afterwards-public .afterwards-public-tabs {
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  color: #333333;
+  height: 35px;
+  line-height: 35px;
+}
+.index-main .afterwards-public .afterwards-public-tabs .afterwards-tab {
+  padding: 0 12px;
+  cursor: pointer;
+}
+.index-main .afterwards-public .afterwards-public-tabs .tab-on {
+  background-color: #07438a;
+  color: #fff;
+}
+.index-main .afterwards-public .henan-map #henanEcharts {
+  height: 400px;
+}
+.index-main .afterwards-public .afterwards-public-table .table {
+  table-layout: fixed;
+  font-size: 16px;
+}
+.index-main .afterwards-public .afterwards-public-table th {
+  color: #7c7c7c;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+.index-main .afterwards-public .afterwards-public-table td {
+  color: #333333;
+  line-height: 18px;
+  padding-top: 15px;
+}
+.index-main .afterwards-public .afterwards-public-table .oneth {
+  width: 42%;
+}
+.index-main .afterwards-public .afterwards-public-table .twoth {
+  width: 42%;
+}
+.index-main .afterwards-public .afterwards-public-table .threeth {
+  width: 16%;
+}
+.index-main .afterwards-public .afterwards-public-table td {
+  border-top: none;
+}
+.index-main .afterwards-public .afterwards-public-table .over-td {
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: 1px;
+}
+.index-main .city-monthlyDataRanking .DataRanking-label {
+  letter-spacing: 1px;
+  color: #999999;
+}
+.index-main .city-monthlyDataRanking .DataRanking-label .label-left {
+  padding-left: 20px;
+}
+.index-main .city-monthlyDataRanking #monthlyDataRanking {
+  width: 100%;
+  height: 300px;
+}
+/*# sourceMappingURL=main.css.map */

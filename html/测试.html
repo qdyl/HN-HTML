@@ -1,0 +1,1964 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="description" content="12348北京,北京法律服务网,北京公共法律服务网,北京法网,北京公共法律服务,北京公共法律,公共法律服务" />
+    <meta name="Keywords" content="12348北京,北京法律服务网,北京公共法律服务网,北京法网,北京公共法律服务,北京公共法律,公共法律服务" />
+    <title>北京法律服务网</title>
+    <link rel="stylesheet" href="/css/swiper-3.4.2.min.css">
+
+    <!-- css -->
+    <link rel="shortcut icon" href="http://bj.12348.gov.cn//images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <link rel="stylesheet" href="/css/layout.css">
+
+    <!-- js -->
+    <script>
+        var frontAppContext = 'http://bj.12348.gov.cn/lawservice/';
+        var siteID = "122";
+        var siteUrl = "http://bj.12348.gov.cn/";
+    </script>
+    <script src="/js/jquery-1.8.3.min.js"></script>
+    <script src="/js/index.js"></script>
+
+    <link rel="stylesheet" href="/css/index.css">
+    <script src="/js/jquery.SuperSlide.2.1.1.js"></script>
+    <script src="/js/echarts.min.js"></script>
+    <script src="/js/visitor.js"></script>
+</head>
+<body>
+<!-- 在线咨询 -->
+<div class="wraper index-page">
+    <!-- 背景轮播 -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="/images/index/slider1.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/index/slider2.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="/images/index/slider3.png" alt="">
+            </div>
+        </div>
+    </div>
+    <!-- /背景轮播 -->
+
+    <!--头部HTML-->
+
+    <!--公共头部-->
+    <!-- 顶部 -->
+    <div class="head-top">
+        <div class="clearfloat main">
+            <div class="col-xs-4 col-sm-4 col-md-4 top-left">
+                <span class="date" id="dat"></span>
+                <a href="http://bj.12348.gov.cn/lawservice/mapservice" class="site"><img src="/images/common/icon_03.png" alt=""><span>半小时服务圈</span></a>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8 top-right">
+                <div class="others clearfloat">
+                    <ul>
+                        <li id="Login"><a onClick="dologin()" class="society-login" href="javascript:;">社会公众登录</a></li>
+                        <li id="ServiceLogin"><a onClick="serviceLogin()" class="service-login" href="javascript:;">服务人员登录</a></li>
+                        <li id="Regist"><a class="registration" href="http://bj.12348.gov.cn/lawservice/member/register?SiteID=122">注册</a></li>
+                        <li id="PersonalInfo" style="display:none;"><a class="society-login" href="http://bj.12348.gov.cn/lawservice/member/index?SiteID=122">个人中心</a></li>
+                        <li id="WelcomeLogin" style="display:none;"><a class="service-login" href="javascript:;">欢迎：<strong id="name"></strong></a></li>
+                        <li id="LogOut" style="display:none;"><a class="registration" href="javascript:;" onClick="logOut()">退出登录</a></li>
+                        <li>
+                            <img src="/images/iconeye.png">
+                            <a class="accessible-browsing" href="javascript:void(0);" onclick="setAccessbility();">无障碍浏览</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /顶部 -->
+
+    <!-- 页头 -->
+    <div class="head">
+        <div class="clearfloat main">
+            <div class="col-xs-7 col-sm-7 col-md-7 head-left">
+                <img src="/images/common/logo_03.png" alt=""><span class="title">&nbsp;北京法律服务网</span>
+            </div>
+            <div class="col-xs-5 col-sm-5 col-md-5 head-right">
+                <form class="input-box" onsubmit="return false;">
+                    <input type="text" placeholder="全文检索" id="QuerySearch" name="QuerySearch">
+                    <button class="search-btn" type="button" onclick="doSearchQuery();return false" name="button" id="headerSearch">
+                        <img src="/images/common/icon_02.png" alt="">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /页头 -->
+
+    <!-- 登录提示弹窗 -->
+    <div class="alertBox alert-box">
+        <div class="alert-box-header">
+            <a class="alert-box-close" href="javascript:/*close*/;">×</a>
+            <h4 class="alert-box-title"></h4>
+        </div>
+        <div class="pop-container alert-box-body flex">
+            <div class="img">
+                <img src="/images/common/tip.png" alt="">
+            </div>
+            <div class="info"></div>
+        </div>
+        <div class="alert-box-foo">
+            <button type="button" name="button">确&nbsp;定</button>
+        </div>
+    </div>
+    <!-- /登录提示弹窗 -->
+    <script>
+        function Dat(){
+            var d=new Date(),str='';
+            str+=d.getFullYear()+'年';
+            str+=d.getMonth() + 1+'月';
+            str+=d.getDate()+'日';
+            return str;
+        }
+        setInterval(function(){$('#dat').html(Dat)},1000);
+
+        function setAccessbility(){
+            var url = "http://bj.12348.gov.cn/accessibilityTools.html?url="+location.pathname;
+            if(location.search != ""){
+                url += "&search=" + encodeURIComponent(location.search)
+            }
+            if(top){
+                top.window.location.href = url
+            }else{
+                window.location.href = url
+            }
+        }
+
+        function logOut() {
+            var url = 'http://bj.12348.gov.cn/lawservice/member/ajaxlogout?' + new Date().getTime();
+            $.post(url,function (){
+                window.location.href = "http://bj.12348.gov.cn/";
+            });
+        }
+
+        var preview="false";
+        window.Membered={};
+        window.Membered.IsLogin = null;
+
+        $.post('http://bj.12348.gov.cn/lawservice/member/logined?t='+new Date().getTime(),function (result){
+            if(result.IsLogin) {
+                Membered.IsLogin = true;
+                Membered.RealName = result.RealName;
+                Membered.Mobile = result.Mobile;
+                Membered.Sex = result.Sex;
+                $("#Login").hide()
+                $("#ServiceLogin").hide()
+                $("#Regist").hide()
+                if(result.RealName){
+                    $("#name").html(result.RealName);
+                }else{
+                    $("#name").html(result.Mobile);
+                }
+                $("#LogOut").show()
+                $("#WelcomeLogin").show()
+                $("#PersonalInfo").show()
+            }else{
+                $("#Login").show()
+                $("#ServiceLogin").show()
+                $("#Regist").show()
+            }
+        },"json");
+
+        function dologin(){
+            var reffer = window.location.href;
+            if(reffer.indexOf('register')>0){
+                var referer = "http://bj.12348.gov.cn/lawservice/member/info?SiteID=122&Current=PersonalInfo";
+                window.location="http://bj.12348.gov.cn/lawservice/member/login?SiteID=122&Referer="+encodeURIComponent(referer);
+            }else{
+                window.location="http://bj.12348.gov.cn/lawservice/member/login?SiteID=122&Referer=" + encodeURIComponent(reffer);
+            }
+        }
+
+        function serviceLogin(){
+            var reffer = window.location.href;
+            window.location="http://bj.12348.gov.cn/lawservice/service/login?SiteID=122&Referer="+encodeURIComponent(reffer);
+        }
+        //全文搜索js
+        function doSearchQuery(){
+            var url = "";
+            var query = document.getElementById("QuerySearch").value;
+            var dealQuery = "";
+            if (!query) {
+                alert("请输入检索词");
+                return;
+            }
+            if (query.indexOf("\"") > -1) {
+                query = query.replace(/\"/g, "〃");
+            }
+            dealQuery = encodeURIComponent(query);
+            url = frontAppContext+"search?Query=" + dealQuery + "&SiteID=122";
+            window.location.href = url;
+        }
+
+
+        document.onkeydown=function(event){
+            e = event ? event :(window.event ? window.event : null);
+            if(e.keyCode==13){
+                var query = document.getElementById("QuerySearch").value;
+                if (query) {
+                    doSearchQuery();
+                }
+            }
+        }
+
+    </script>
+
+    <!--/头部HTML-->
+    <!-- 主体部分 -->
+    <div class="content">
+        <!-- 悬浮框 -->
+        <div class="float-box main">
+            <div class="aside aside-l box-shadow">
+                <ul>
+                    <li class="wyw-btn"><a href="#wyw"><img src="/images/index/icon_05.png" alt=""></a></li>
+                    <li class="wyb-btn"><a href="#wyb"><img src="/images/index/icon_06.png" alt=""></a></li>
+                    <li class="wyc-btn"><a href="#wyc"><img src="/images/index/icon_04.png" alt=""></a></li>
+                    <li class="wyx-btn"><a href="#wyx"><img src="/images/index/icon_07.png" alt=""></a></li>
+                    <li class="wyk-btn">
+
+                        <a href="/wyck/"><img src="/images/index/icon_08.png" alt=""></a>
+
+                    </li>
+                    <li class="wyp-btn zxpj"><a href="javascript:;"><img src="/images/index/icon_09.png" alt=""></a></li>
+                </ul>
+            </div>
+            <div class="aside aside-r box-shadow">
+                <ul>
+                    <li class="app">
+                        <p>北京通法律服务</p>
+                        <div class="qr-code-box">
+                            <img src="/images/index/bjt_app.png" alt="">
+                            <p>APP</p>
+                        </div>
+                    </li>
+                    <li class="wechat">
+                        <p>北京掌上12348</p>
+                        <div class="qr-code-box">
+                            <img src="/images/index/weixin.png" alt="">
+                            <p>公众号</p>
+                        </div>
+                    </li>
+                    <li class="top" id="top"><a href="#"><img src="/images/index/icon_12.png" alt=""></a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /悬浮框 -->
+
+        <!-- 通知公告 -->
+        <div class="tz-box">
+            <div class="main clearfloat">
+                <img class="notice-icon" src="/images/index/icon_32.png" alt="">
+                <div class="notice">
+                    <div class="bd">
+                        <span style="color: white;">通知公告：</span>
+                        <div class="tempWrap">
+
+                            <ul class="infoList">
+
+                                <li>
+
+                                    <a href="/c/2018-11-12/497706.shtml" target="_blank">《北京市司法局&#32;北京市卫生健康委员会&#32;北京市财政局&#32;北京市公安局&#32;北京市高级人民法院&#32;北京市保监局关于加强医疗纠纷人民调解工作的意见》（征求意见稿）公开征求意见</a>
+                                </li>
+                                <li>
+
+                                    <a href="/c/2018-11-07/497458.shtml" target="_blank">关于公布《北京市公共法律服务项目&#32;（产品）目录（第三批）》的公告</a>
+                                </li>
+                                <li>
+
+                                    <a href="/c/2018-11-02/497450.shtml" target="_blank">关于领取2018年国家统一法律职业资格考试报名费收据的通知</a>
+                                </li>
+                                <li>
+
+                                    <a href="/c/2018-10-15/497005.shtml" target="_blank">关于公布2018年国家统一法律职业资格考试北京考区主观题考试考场位置信息的通知</a>
+                                </li>
+                                <li>
+
+                                    <a href="/c/2018-10-03/496978.shtml" target="_blank">关于2018年国家统一法律职业资格考试北京考区主观题考试网上选择考点组的通知</a>
+                                </li>
+                                <li>
+
+                                    <a href="/c/2018-09-27/496906.shtml" target="_blank">关于2018年国家统一法律职业资格考试北京考区客观题考试成绩公布和主观题考试有关事项公告</a>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /通知公告 -->
+
+        <!-- 我要问 -->
+        <div class="wyw-box" id="wyw">
+            <div class="main">
+                <div class="con-head sky-blue-color">
+                    <img src="/images/index/woyaowen.png" alt="">
+                </div>
+                <div class="con-box clearfloat margin-top">
+                    <div class=" wyw-box-left box-shadow">
+                        <div class="wyw-box-left-head">
+                            <img src="/images/index/icon_14.png" alt="">
+                            <h3 class="txt">留言咨询</h3>
+                            <a href="http://bj.12348.gov.cn/lawservice/consult/list?SiteID=122" class="more"><span>查看更多>></span></a>
+                        </div>
+                        <div class="wyw-box-left-con" id="ConsultList">
+
+                        </div>
+                    </div>
+                    <div class=" wyw-box-right clearfloat">
+                        <div class="wyw-box-right-top flex col-xs-12 col-flex">
+                            <div class="col-xs-4 col-flex-1">
+                                <div class="box box-shadow znzx flex-1">
+                                    <img src="/images/index/icon_18.png" alt="">
+                                    <h6>智能咨询</h6>
+                                    <h2 id="robotCount"></h2>
+                                    <h5>
+
+                                        <a href="/wyw/znzx/" onclick="robotConsultAdd();">智能咨询</a>
+
+                                    </h5>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-flex-1">
+                                <div class="box box-shadow lyzx flex-1">
+                                    <img src="/images/index/icon_16.png" alt="">
+                                    <h6>留言咨询</h6>
+                                    <h2 id="ConsultCount"></h2>
+                                    <h5 class="wyly-btn"><a href="javascript:void(0);">我要留言</a></h5>
+                                </div>
+                            </div>
+                            <div class="col-xs-4 col-flex-1">
+                                <div class="box box-shadow zxzx flex-1">
+                                    <img src="/images/index/icon_17.png" alt="">
+                                    <h6>在线咨询</h6>
+                                    <h2 id="lineCount"></h2>
+                                    <h5><a href="javascript:void(0);" onclick="lineConsultAdd()">在线咨询</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wyw-box-right-bottom margin-top flex col-xs-12 col-flex">
+                            <div class="col-xs-6 col-flex-1">
+                                <div class="box box-shadow rxzx flex-1">
+                                    <div class="box-con">
+                                        <img src="/images/index/icon_19.png" alt="">
+                                        <h5>热线咨询</h5>
+                                        <!--  <h2>91593 <span>次</span></h2>-->
+                                    </div>
+                                    <a class="more" href="javascript:;">查看详情 >> </a>
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-flex-1">
+                                <div class="box box-shadow stck flex-1">
+                                    <div class="box-con">
+                                        <img src="/images/index/icon_20.png" alt="">
+                                        <h5>实体窗口</h5>
+                                    </div>
+                                    <a class="more" href="http://bj.12348.gov.cn/lawservice//lawstck?Ywly=3">查看详情 >> </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /我要问 -->
+
+        <!-- 满意度评价 -->
+        <div class="eval-box box-shadow" id="eval" style="margin:0 auto;text-align: center;max-width: 1200px;margin-top: 20px;position: relative;border-radius: 3px;">
+            <img src="/images/eval.png" alt="" style="width: 1200px;">
+            <span style="position: absolute;bottom: 15px;left:0;right:0;margin: 0 auto;margin-left: -110px;text-align: center;display: inline-block;">
+
+    				<a href="/mydpjsysm/" target="_blank" ><img style="cursor: pointer;" src="/images/icon_12.png" alt="满意度评价说明"></a>
+
+                <!-- href="javaScript:;" -->
+          <a onclick="judicialComment()" target="_blank" ><img style="cursor: pointer;" src="/images/icon_13.png" alt="网上评价"></a>
+    		</span>
+        </div>
+        <!-- /满意度评价 -->
+
+        <!-- 我要办 -->
+        <div class="wyb-box margin-top" id="wyb">
+            <div class="main">
+                <div class="con-head pale-red-color">
+                    <img src="/images/index/woyaoban.png" alt="">
+                </div>
+                <div class="con-box clearfloat margin-top serviceorder">
+                    <div class="col-xs-12 col-flex wyb-box-right">
+                        <div class="col-xs-12 col-flex wyb-box-right-top">
+
+
+                            <div class="col-xs-3 col-flex wyb-box-right">
+                                <a href="/lsfw/" class="box col-xs-3 lsfwsq">
+                                    <div class="box-con">
+                                        <div class="first box-shadow">
+                                            <h2>律师业务申请</h2>
+                                            <p class="txt">您可以了解律师行政许可业务办理的办事流程、常见问题，在律师查询服务中查询律师信息，在律师业务办理中办理律师业务事项。</p>
+                                        </div>
+                                        <div class="second box-shadow">
+                                            <div class="second-box">
+                                                <img src="/images/index/icon_28.png" alt="">
+                                                <h2>律师业务申请</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+
+
+                            <a href="/gzfw/" class="col-xs-3 box bzywsq">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <h2>公证服务申请</h2>
+                                        <p class="txt">你可以了解公证业务办理过程中所需的服务指引及办事流程内容，在线申请办理公证业务。</p>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="second-box">
+                                            <img src="/images/index/icon_26.png" alt="">
+                                            <h2>公证服务申请</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+
+                            <a href="/sfjd/" class="col-xs-3 box sfjdfw">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <h2>司法鉴定服务</h2>
+                                        <p class="txt">您可以了解司法鉴定办理过程中所需的服务指引及办事流程内容，在司法鉴定机构查询服务中寻找符合需求的司法鉴定机构信息。</p>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="second-box">
+                                            <img src="/images/index/icon_25.png" alt="">
+                                            <h2>司法鉴定服务</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+
+                            <a href="/flyz/" class="col-xs-3 box flyzsq">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <h2>法律援助申请</h2>
+                                        <p class="txt">您可以了解法律援助的申请范围、办理机构、办理依据、申请材料、注意事项、申请流程，下载相关材料，在线申请法律援助。</p>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="second-box">
+                                            <img src="/images/index/icon_29.png" alt="">
+                                            <h2>法律援助申请</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        <div class="col-xs-12 col-flex wyb-box-right-bottom margin-top">
+
+                            <a href="/rmdj/" class="col-xs-3 box rmtjsq">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <h2>人民调解申请</h2>
+                                        <p class="txt">您可以了解人民调解相关的服务指引及常见问题，在人民调解组织查询服务中寻找符合需求的人民调解组织信息，在线预约服务。</p>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="second-box">
+                                            <img src="/images/index/icon_30.png" alt="">
+                                            <h2>人民调解申请</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+
+                            <a href="/sfks/" class="col-xs-3 box sfksfw">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <h2>司法考试服务</h2>
+                                        <p class="txt">您可以了解司法考试相关的通知公告、政策法规、常见问题、工作安排、办事指南内容，提供快速通道在线查询办理司法考试服务。</p>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="second-box">
+                                            <img src="/images/index/icon_31.png" alt="">
+                                            <h2>司法考试服务</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="javaScript:;" onclick="videoService()" class="col-xs-3 box sphj">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <h2>视频会见服务</h2>
+                                        <p class="txt">您可以申请通过网络视频的方式，在就近的司法所，对在本市内监狱（戒毒所）服刑（戒毒）的亲人进行远程视频探视。</p>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="second-box">
+                                            <img src="/images/index/icon_27.png" alt="">
+                                            <h2>视频会见服务</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                            <a href="/zcsq/" class="col-xs-3 box swzcsq">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <h2>商事仲裁申请</h2>
+                                        <p class="txt">您可以了解商事仲裁，了解北京仲裁委员会北京国际仲裁中心的仲裁规则，仲裁流程、立案须知、常见问题等，并进行在线预约。</p>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="second-box">
+                                            <img src="/images/index/icon_43.png" alt="">
+                                            <h2>商事仲裁申请</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /我要办 -->
+
+        <!-- /我要查 -->
+        <div class="wyc-box"  id="wyc">
+            <div class="main">
+                <div class="con-head">
+                    <img src="/images/index/woyaocha.png" alt="">
+                    <form class="input-box index-wyc" method="post" id="form_search" action="http://bj.12348.gov.cn/lawservice/lawservice">
+                        <div id="check_orgper" class="select-box select-box-btn">
+                            <div class="select-header" style="margin-top:4px;height:28px;line-height:28px;border-right:solid 1px #8aadd7">律师</div>
+                            <ul class="select-content">
+                                <li id="ls">律师</li>
+                                <li id="gzy">公证员</li>
+                                <li id="sfjdr">司法鉴定人</li>
+                                <li id="rmtjy">人民调解员</li>
+                                <li id="lsoffic">律师事务所</li>
+                                <li id="gzc">公证处</li>
+                                <li id="sfjd">司法鉴定机构</li>
+                                <li id="flyz">法律援助机构</li>
+                                <li id="rmtj">人民调解组织</li>
+                                <li id="jcsf">基层司法所</li>
+                            </ul>
+                        </div>
+                        <input type="text" id="QueryHead" name="Query" autocomplete="off" placeholder="请输入律师姓名">
+                        <input type="hidden" value="person" name="ViewType" id="ViewTypeHead">
+                        <input type="hidden" value="LawyerType" name="ContentType" id="ContentTypeHead">
+                        <button class="search-btn" type="button" name="button" onclick="headsearch()">
+                            <img src="/images/common/icon_02.png" >
+                        </button>
+                    </form>
+                </div>
+                <div class="con-box clearfloat">
+                    <div class="col-xs-6 col-flex wyc-box-left">
+                        <div class="wycx-left" style="height:510px" id="map">
+                            <!--  <img src="${prefix("images/index/index/index-map2.png")}" alt=""/> -->
+                        </div>
+                    </div>
+                    <div class="col-xs-6 col-flex wyc-box-right">
+                        <div class="wyc-box-right-top clearfloat">
+                            <h4 class="title">人员查询</h4>
+                            <div class="box-con">
+                                <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=person&ContentType=LawyerType" class="col-xs-3 box">
+                                    <div class="box-con">
+                                        <div class="first box-shadow">
+                                            <div class="box-content">
+                                                <h2 class="num" id="LawyerType"></h2>
+                                                <h4>律师</h4>
+                                            </div>
+                                        </div>
+                                        <div class="second box-shadow">
+                                            <div class="box-content">
+                                                <h2 class="num" id="LawyerTypeNew"></h2>
+                                                <h4>律师</h4>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+
+                                <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=person&ContentType=NotaryType" <div class="col-xs-3 box">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <div class="box-content">
+                                            <h2 class="num" id="NotaryType"></h2>
+                                            <h4>公证员</h4>
+                                        </div>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="box-content">
+                                            <h2 class="num" id="NotaryTypeNew"></h2>
+                                            <h4>公证员</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+
+                                <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=person&ContentType=IdentifyOrType" <div class="col-xs-3 box">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <div class="box-content">
+                                            <h2 class="num" id="IdentifyOrType"></h2>
+                                            <h4>司法鉴定人</h4>
+                                        </div>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="box-content">
+                                            <h2 class="num" id="IdentifyOrTypeNew"></h2>
+                                            <h4>司法鉴定人</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+
+                                <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=person&ContentType=MediatorType" <div class="col-xs-3 box">
+                                <div class="box-con">
+                                    <div class="first box-shadow">
+                                        <div class="box-content">
+                                            <h2 class="num" id="MediatorType"></h2>
+                                            <h4>人民调解员</h4>
+                                        </div>
+                                    </div>
+                                    <div class="second box-shadow">
+                                        <div class="box-content">
+                                            <h2 class="num" id="MediatorTypeNew"></h2>
+                                            <h4>人民调解员</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                </a>
+                            </div>
+                            </div>
+                                <div class="wyc-box-right-bottom clearfloat">
+                                    <h4 class="title">机构查询</h4>
+                                    <div class="box-con">
+                                        <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=org&ContentType=LawOfficeType" <div class="col-xs-3 box">
+                                        <div class="box-con">
+                                            <div class="first box-shadow">
+                                                <div class="box-content">
+                                                    <h2 class="num" id="LawOfficeType"></h2>
+                                                    <h4>律师事务所</h4>
+                                                </div>
+                                            </div>
+                                            <div class="second box-shadow">
+                                                <div class="box-content">
+                                                    <h2 class="num" id="LawOfficeTypeNew"></h2>
+                                                    <h4>律师事务所</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </a>
+
+                                        <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=org&ContentType=NotaryOfficeType" <div class="col-xs-3 box">
+                                        <div class="box-con">
+                                            <div class="first box-shadow">
+                                                <div class="box-content">
+                                                    <h2 class="num" id="NotaryOfficeType"></h2>
+                                                    <h4>公证处</h4>
+                                                </div>
+                                            </div>
+                                            <div class="second box-shadow">
+                                                <div class="box-content">
+                                                    <h2 class="num" id="NotaryOfficeTypeNew"></h2>
+                                                    <h4>公证处</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </a>
+
+                                        <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=org&ContentType=IdentifyOrgType" <div class="col-xs-3 box">
+                                        <div class="box-con">
+                                            <div class="first box-shadow">
+                                                <div class="box-content">
+                                                    <h2 class="num" id="IdentifyOrgType"></h2>
+                                                    <h4>司法鉴定机构</h4>
+                                                </div>
+                                            </div>
+                                            <div class="second box-shadow">
+                                                <div class="box-content">
+                                                    <h2 class="num" id="IdentifyOrgTypeNew"></h2>
+                                                    <h4>司法鉴定机构</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </a>
+
+                                        <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=org&ContentType=LegalAidAgencyType" <div class="col-xs-3 box">
+                                        <div class="box-con">
+                                            <div class="first box-shadow">
+                                                <div class="box-content">
+                                                    <h2 class="num" id="LegalAidAgencyType"></h2>
+                                                    <h4>法律援助机构</h4>
+                                                </div>
+                                            </div>
+                                            <div class="second box-shadow">
+                                                <div class="box-content">
+                                                    <h2 class="num" id="LegalAidAgencyTypeNew"></h2>
+                                                    <h4>法律援助机构</h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                        <div class="box-con">
+                                            <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=org&ContentType=MediationOrgType" <div class="col-xs-3 box">
+                                            <div class="box-con">
+                                                <div class="first box-shadow">
+                                                    <div class="box-content">
+                                                        <h2 class="num" id="MediationOrgType"></h2>
+                                                        <h4>人民调解组织</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="second box-shadow">
+                                                    <div class="box-content">
+                                                        <h2 class="num" id="MediationOrgTypeNew"></h2>
+                                                        <h4>人民调解组织</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </a>
+
+                                            <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=org&ContentType=JusicialOfficeType" <div class="col-xs-3 box">
+                                            <div class="box-con">
+                                                <div class="first box-shadow">
+                                                    <div class="box-content">
+                                                        <h2 class="num" id="JusicialOfficeType"></h2>
+                                                        <h4>基层司法所</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="second box-shadow">
+                                                    <div class="box-content">
+                                                        <h2 class="num" id="JusicialOfficeTypeNew"></h2>
+                                                        <h4>基层司法所</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </a>
+
+                                            <a href="http://bj.12348.gov.cn/lawservice/lawservice?ViewType=org&ContentType=ArbitryOrgType" <div class="col-xs-3 box">
+                                            <div class="box-con">
+                                                <div class="first box-shadow">
+                                                    <div class="box-content">
+                                                        <h2 class="num" id="ArbitryOrgType"></h2>
+                                                        <h4>仲裁机构</h4>
+                                                    </div>
+                                                </div>
+                                                <div class="second box-shadow">
+                                                    <div class="box-content">
+                                                        <h2 class="num" id="ArbitryOrgTypeNew"></h2>
+                                                        <h4>仲裁机构</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            </a>
+                                        </div>
+                                        </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                        <!-- /我要查 -->
+
+                                        <!-- 导航 -->
+                                        <div class="nax-box main margin-top clearfloat col-flex">
+                                            <!-- <div class="col-xs-4 col-flex-1"> -->
+                                            <a href="http://search.chinalaw.gov.cn/search2.html" target="_blank" class="box box-shadow flfgcx">
+                                                <div class="box-con">
+                                                    <h2>法律法规查询</h2>
+                                                </div>
+                                            </a>
+                                            <!-- </div> -->
+
+                                            <!-- <div class="col-xs-4 col-flex-1"> -->
+                                            <a href="/cpmlk/" class="box box-shadow ggflwf">
+                                                <div class="box-con">
+                                                    <h2>公共法律服务项目平台</h2>
+                                                    <h2>（产品目录库）</h2>
+                                                </div>
+                                            </a>
+                                            <!-- </div> -->
+
+                                            <!-- <div class="col-xs-4 col-flex-1"> -->
+                                            <a href="http://alk.12348.gov.cn/" target="_blank" class="box box-shadow sfxzalicx">
+                                                <div class="box-con">
+                                                    <h2>司法行政案例查询</h2>
+                                                </div>
+                                            </a>
+                                            <!-- </div> -->
+                                        </div>
+                                        <!-- /导航 -->
+
+                                        <!-- 其他 -->
+                                        <div class="other-box main margin-top clearfloat" id="wyx">
+
+                                            <!-- 图文说法 -->
+                                            <div class="con-head violet-color" style="margin-bottom: 20px;">
+                                                <img src="/images/index/woyaoxue.png" alt="">
+                                                <!--           <span class="txt">我要学</span> -->
+                                            </div>
+                                            <div class="col-xs-4 twsf" id="twsf">
+                                                <div class="top">
+                                                    <div class="box-head">
+
+                                                        <span style="font-weight: bold;">图文说法</span>
+                                                        <a class="more" href="/twsf/">查看更多>></a>
+
+                                                    </div>
+                                                    <div class="box-con">
+
+                                                        <div class="clearfloat box-con-bottom margin-top">
+
+                                                            <!-- <div class="col-xs-6"> -->
+                                                            <a class="box box-shadow" href="/c/2019-09-10/503814.shtml" target="_blank">
+                                                                <img src="/upload/resources/image/2019/09/10/28744_175x137c.jpg" alt="">
+                                                                <p class="txt" title="禁毒普法宣传挂图">禁毒普法宣传挂图</p>
+                                                            </a>
+                                                            <!-- </div> -->
+                                                            <!-- <div class="col-xs-6"> -->
+                                                            <a class="box box-shadow" href="/c/2019-09-10/503808.shtml" target="_blank">
+                                                                <img src="/upload/resources/image/2019/09/10/28703_175x137c.jpg" alt="">
+                                                                <p class="txt" title="《国家安全法》法治宣传挂图">《国家安全法》法治宣...</p>
+                                                            </a>
+                                                            <!-- </div> -->
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="bottom margin-top">
+                                                        <div class="box-head">
+
+                                                            <span style="font-weight: bold;">普法视频</span>
+                                                            <a class="more" href="/wx/wyxf/pfsp/">查看更多>></a>
+
+                                                        </div>
+                                                        <div class="box-con">
+
+                                                            <div class="clearfloat box-con-bottom margin-top">
+
+                                                                <!-- <div class="col-xs-6"> -->
+                                                                <a class="box box-shadow" href="/c/2019-09-10/503817.shtml" title="买买买，真能躺着挣大钱？骗骗骗，那是泥潭等您陷！" target="_blank">
+                                                                    <img src="/upload/resources/image/2019/09/10/28750_175x137c.jpg" alt="">
+                                                                    <p class="txt">
+                                                                        买买买，真能躺着挣大...
+                                                                    </p>
+                                                                </a>
+                                                                <!-- </div> -->
+                                                                <!-- <div class="col-xs-6"> -->
+                                                                <a class="box box-shadow" href="/c/2019-09-10/503816.shtml" title="科学选真金，且听朝检君" target="_blank">
+                                                                    <img src="/upload/resources/image/2019/09/10/28748_175x137c.jpg" alt="">
+                                                                    <p class="txt">
+                                                                        科学选真金，且听朝检...
+                                                                    </p>
+                                                                </a>
+                                                                <!-- </div> -->
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- /图文说法 -->
+
+                                            <!-- 普法新闻 以案释法 法律解读 -->
+                                            <div class="col-xs-6 pfxw">
+
+                                                <div class="slideTxtBox">
+                                                    <div class="hd" id="slideTxtBox_hd">
+                                                        <ul>
+
+                                                            <li id="/wx/wyxf/xwdt/">普法新闻</li>
+
+
+                                                            <li id="/yasf/">以案释法</li>
+
+                                                            <!--       				<cms:catalog alias="fljd">
+                                                                                      <li id="${Catalog.Link}">法律解读</li>
+                                                                                  </cms:catalog> -->
+                                                        </ul>
+
+                                                        <a class="more" id="hd_more" href="/wx/wyxf/xwdt/">查看更多>></a>
+
+                                                    </div>
+                                                    <div class="bd">
+
+                                                        <ul>
+
+                                                            <li><span class="date">2019/09/10</span>
+                                                                <a href="/c/2019-09-10/503807.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">通州区开展“公共法律服务拥军伴你行”主题宣传活动</a></li>
+                                                            <li><span class="date">2019/08/22</span>
+                                                                <a href="/c/2019-08-22/503709.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">人民是“阅卷人”&#32;，看西城区治安岗亭变法宣“新阵地...</a></li>
+                                                            <li><span class="date">2019/08/22</span>
+                                                                <a href="/c/2019-08-22/503708.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">与法“童”行，海淀区开展暑期普法，为青少年暑期安全...</a></li>
+                                                            <li><span class="date">2019/08/22</span>
+                                                                <a href="/c/2019-08-22/503707.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">大手拉小手，聚焦垃圾分类，争当学法、护法小使者</a></li>
+                                                            <li><span class="date">2019/08/22</span>
+                                                                <a href="/c/2019-08-22/503706.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">西城区多措并举推进普法联盟建设</a></li>
+                                                            <li><span class="date">2019/08/22</span>
+                                                                <a href="/c/2019-08-22/503705.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">丰台区聚合普法力量，传播普法声音</a></li>
+                                                            <li><span class="date">2019/08/12</span>
+                                                                <a href="/c/2019-08-12/503607.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">普法接地气&#32;西城区“法治文艺走基层”启动</a></li>
+                                                            <li><span class="date">2019/08/12</span>
+                                                                <a href="/c/2019-08-12/503606.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">市委全面依法治市委员会守法普法协调小组召开第二次全...</a></li>
+                                                            <li><span class="date">2019/08/12</span>
+                                                                <a href="/c/2019-08-12/503605.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">北京市开展庆祝新中国成立70周年主题普法宣传活动，​...</a></li>
+                                                            <li><span class="date">2019/07/30</span>
+                                                                <a href="/c/2019-07-30/503512.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">西城区安全普法教育为同学们的暑期保驾护航！</a></li>
+                                                            <li><span class="date">2019/07/30</span>
+                                                                <a href="/c/2019-07-30/503511.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">海淀区从多角度入手，保障普法惠民生落地</a></li>
+                                                        </ul>
+
+
+                                                        <ul>
+
+                                                            <li><span class="date">2019/06/26</span>
+                                                                <a href="/c/2019-06-26/502509.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">律师代理中绒集团与上海涌川投资合伙企业（有限合伙）...</a></li>
+                                                            <li><span class="date">2019/06/26</span>
+                                                                <a href="/c/2019-06-26/502510.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">律师受委托为祝某涉嫌故意杀人辩护案</a></li>
+                                                            <li><span class="date">2019/06/26</span>
+                                                                <a href="/c/2019-06-26/502511.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">北京市良乡监狱服刑人员李某减刑案</a></li>
+                                                            <li><span class="date">2019/06/26</span>
+                                                                <a href="/c/2019-06-26/502512.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">北京市法律援助中心对翟某涉嫌诈骗提供法律援助案</a></li>
+                                                            <li><span class="date">2019/06/26</span>
+                                                                <a href="/c/2019-06-26/502607.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">刑事案件案例故意杀人罪</a></li>
+                                                            <li><span class="date">2019/06/26</span>
+                                                                <a href="/c/2019-06-26/502513.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">北京市西城区法律援助中心为老年人彭某某被侵权提供法...</a></li>
+                                                            <li><span class="date">2019/03/25</span>
+                                                                <a href="/c/2019-03-25/500909.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">男子误入传销逃跑时将人刺死，检方的决定让网友怒赞！</a></li>
+                                                            <li><span class="date">2019/03/25</span>
+                                                                <a href="/c/2019-03-25/500908.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">挖塘设夹诱捕珍禽一时嘴馋触刑受罚</a></li>
+                                                            <li><span class="date">2019/03/25</span>
+                                                                <a href="/c/2019-03-25/500907.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">出轨丈夫赠与情人60余万&#32;妻子起诉返还获法院支持</a></li>
+                                                            <li><span class="date">2019/03/25</span>
+                                                                <a href="/c/2019-03-25/500906.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">女子酒后派出所撒泼&#32;扰乱单位秩序被拘留</a></li>
+                                                            <li><span class="date">2019/03/21</span>
+                                                                <a href="/c/2019-03-21/500853.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">办案法官提醒：处置职场性骚扰关键是有据可查</a></li>
+                                                        </ul>
+
+
+                                                        <ul>
+
+                                                            <li><span class="date">2019/03/21</span>
+                                                                <a href="/c/2019-03-21/500865.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">外商投资法：为扩大开放推动改革提供法治保障</a></li>
+                                                            <li><span class="date">2019/02/13</span>
+                                                                <a href="/c/2019-02-13/499905.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">土地经营权新政解读：因地制宜&#32;不搞强迫命令</a></li>
+                                                            <li><span class="date">2019/01/09</span>
+                                                                <a href="/c/2019-01-09/499205.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">一图读懂&#32;|&#32;《电子商务法》到底讲了啥？</a></li>
+                                                            <li><span class="date">2019/01/04</span>
+                                                                <a href="/c/2019-01-04/498806.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">最高法发布建设工程司法解释加强建筑工人权益保护</a></li>
+                                                            <li><span class="date">2019/01/03</span>
+                                                                <a href="/c/2019-01-03/498731.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">2018年12月施行法律法规解读</a></li>
+                                                            <li><span class="date">2019/01/03</span>
+                                                                <a href="/c/2019-01-03/498732.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">2018年11月施行法律法规解读</a></li>
+                                                            <li><span class="date">2019/01/03</span>
+                                                                <a href="/c/2019-01-03/498733.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">2018年10月施行法律法规解读</a></li>
+                                                            <li><span class="date">2019/01/03</span>
+                                                                <a href="/c/2019-01-03/498734.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">2018年9月施行法律法规解读</a></li>
+                                                            <li><span class="date">2019/01/03</span>
+                                                                <a href="/c/2019-01-03/498735.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">2018年8月施行法律法规解读</a></li>
+                                                            <li><span class="date">2019/01/03</span>
+                                                                <a href="/c/2019-01-03/498736.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">2018年7月施行法律法规解读</a></li>
+                                                            <li><span class="date">2019/01/03</span>
+                                                                <a href="/c/2019-01-03/498737.shtml" target="_blank"><img src="/images/index/dot_15.png" alt="">2018年6月施行法律法规解读</a></li>
+                                                        </ul>
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!-- /普法新闻 以案释法 法律解读 -->
+
+                                            <!-- 普法明星 -->
+                                            <div class="col-xs-12 col-sm-2 col-md-2 pfmx">
+
+                                                <a href="/jjjpf/" target="_blank"><img src="/images/index/jjpf.png" alt=""></a></li>
+
+
+                                                <a href="/xfzt/" target="_blank"><img src="/images/index/xfqw.png"  style="margin-top:10px" alt=""></a></li>
+
+                                                <!--<div class="box-head">
+                                                    <cms:catalog alias="wx_wyxf_pfmx">
+                                                      <span style="font-weight: bold;">普法明星</span>
+                                                      <a class="more" href="${Catalog.Link}">查看更多>></a>
+                                                  </cms:catalog>
+                                                </div>
+                                                <div class="picScroll-top">
+                                                        <div class="hd">
+                                                            <a class="next"></a>
+                                                            <a class="prev"></a>
+                                                        </div>
+                                                        <div class="bd">
+                                                        <cms:article count="6" catalogalias="wx_wyxf_pfmx" hasAttribute="Image">
+                                                            <ul class="picList">
+                                                                  <z:list>
+                                                                    <li>
+                                                                        <div class="pic"><a href="${Article.Link}" target="_blank"><img class="box-shadow"  src="${article.LogoFile}"  alt=""/></a></div>
+                                                                        <div class="title"><a href="${Article.Link}" target="_blank">${charWidth(article.Title,18,"...")}</a></div>
+                                                                    </li>
+                                                                </z:list>
+                                                            </ul>
+                                                        </cms:article>
+                                                        </div>
+                                                    </div>-->
+                                            </div>
+                                            <!-- /普法明星 -->
+                                        </div>
+
+                                        <!-- 其他 -->
+
+
+                                    </div>
+                                        <!-- /主体部分 -->
+
+                                        <!-- 页尾 -->
+
+                                        <!--尾部HTML-->
+                                        <div class="footer">
+                                            <div class="clearfloat main">
+                                                <div class="fr-links flex col-xs-12">
+                                                    <div class="box flex-1 col-xs-4">
+                                                        <form class="" action="/template/" method="">
+                                                            <div class="select-box select-box-btn">
+                                                                <div class="select-header">全国法律服务网站</div><span><img src="/images/common/arr_11.png" alt=""></span>
+                                                                <ul class="select-content">
+
+
+                                                                    <li class="nowrap"><a href="http://www.12348.gov.cn/" target="_blank">中国法网</a></li>
+                                                                    <li class="nowrap"><a href="http://tj.12348.gov.cn/" target="_blank">天津法网</a></li>
+                                                                    <li class="nowrap"><a href="http://he.12348.gov.cn/" target="_blank">河北法网</a></li>
+                                                                    <li class="nowrap"><a href="http://sx.12348.gov.cn/SXSFWEB/sxsfweb_fwinde" target="_blank">山西法网</a></li>
+                                                                    <li class="nowrap"><a href="http://nm.12348.gov.cn/" target="_blank">内蒙古法网</a></li>
+                                                                    <li class="nowrap"><a href="http://ln.12348.gov.cn/" target="_blank">辽宁法网</a></li>
+                                                                    <li class="nowrap"><a href="http://jl.12348.gov.cn/legal/front/index.action" target="_blank">吉林法网</a></li>
+                                                                    <li class="nowrap"><a href="http://hl.12348.gov.cn/gfpt/public/gfpt/index" target="_blank">黑龙江法网</a></li>
+                                                                    <li class="nowrap"><a href="http://sh.12348.gov.cn/" target="_blank">上海法网</a></li>
+                                                                    <li class="nowrap"><a href="http://js.12348.gov.cn/" target="_blank">江苏法网</a></li>
+                                                                    <li class="nowrap"><a href="http://12348.zjsft.gov.cn/public/index.jsp" target="_blank">浙江法网</a></li>
+                                                                    <li class="nowrap"><a href="http://ah.12348.gov.cn/" target="_blank">安徽法网</a></li>
+                                                                    <li class="nowrap"><a href="http://fj.12348.gov.cn/" target="_blank">福建法网</a></li>
+                                                                    <li class="nowrap"><a href="http://jx.12348.gov.cn/" target="_blank">江西法网</a></li>
+                                                                    <li class="nowrap"><a href="http://sd.12348.gov.cn/" target="_blank">山东法网</a></li>
+                                                                    <li class="nowrap"><a href="http://ha.12348.gov.cn/#/home/home" target="_blank">河南法网</a></li>
+                                                                    <li class="nowrap"><a href="http://hb.12348.gov.cn/" target="_blank">湖北法网</a></li>
+                                                                    <li class="nowrap"><a href="http://www.rufa.gov.cn/rufamain/index" target="_blank">湖南法网</a></li>
+                                                                    <li class="nowrap"><a href="https://gd.12348.gov.cn/" target="_blank">广东法网</a></li>
+                                                                    <li class="nowrap"><a href="http://gx.12348.gov.cn" target="_blank">广西法网</a></li>
+                                                                    <li class="nowrap"><a href="http://hi.12348.gov.cn/" target="_blank">海南法网</a></li>
+                                                                    <li class="nowrap"><a href="http://cq.12348.gov.cn/" target="_blank">重庆法网</a></li>
+                                                                    <li class="nowrap"><a href="http://sc.12348.gov.cn/" target="_blank">四川法网</a></li>
+                                                                    <li class="nowrap"><a href="http://www.gz12348.gov.cn/" target="_blank">贵州法网</a></li>
+                                                                    <li class="nowrap"><a href="http://yn.12348.gov.cn/home/index" target="_blank">云南法网</a></li>
+                                                                    <li class="nowrap"><a href="http://xz.12348.gov.cn/" target="_blank">西藏法网</a></li>
+                                                                    <li class="nowrap"><a href="http://sn.12348.gov.cn/" target="_blank">陕西法网</a></li>
+                                                                    <li class="nowrap"><a href="http://gs.12348.gov.cn/" target="_blank">甘肃法网</a></li>
+                                                                    <li class="nowrap"><a href="http://qh.12348.gov.cn/" target="_blank">青海法网</a></li>
+                                                                    <li class="nowrap"><a href="http://nx.12348.gov.cn/flfw-xt/" target="_blank">宁夏法网</a></li>
+                                                                    <li class="nowrap"><a href="http://xj.12348.gov.cn/" target="_blank">新疆法网</a></li>
+                                                                    <li class="nowrap"><a href="http://bt.12348.gov.cn/#/home/home" target="_blank">新疆兵团法网</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </form>
+
+                                                    </div>
+                                                    <div class="box flex-1 col-xs-4">
+                                                        <form class="" action="/template/" method="">
+                                                            <div class="select-box select-box-btn">
+                                                                <div class="select-header">全国司法厅（局）网站</div><span><img src="/images/common/arr_11.png" alt=""></span>
+                                                                <ul class="select-content">
+
+
+                                                                    <li class="nowrap"><a href="http://www.moj.gov.cn/" target="_blank">司法部</a></li>
+                                                                    <li class="nowrap"><a href="http://sf.tj.gov.cn/" target="_blank">天津市司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.hbfz.gov.cn/" target="_blank">河北省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://sft.shanxi.gov.cn/SXSFWEB/sxsfweb_inde" target="_blank">山西省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://sft.nmg.gov.cn" target="_blank">内蒙古自治区司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://sft.ln.gov.cn/" target="_blank">辽宁省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://sft.jl.gov.cn/" target="_blank">吉林省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.hljsf.gov.cn/" target="_blank">黑龙江省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.justice.gov.cn/" target="_blank">上海市司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://sft.jiangsu.gov.cn" target="_blank">江苏省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.zjsft.gov.cn/" target="_blank">浙江省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.ahsft.gov.cn/" target="_blank">安徽省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.fjsf.gov.cn/" target="_blank">福建省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.jxsf.gov.cn/" target="_blank">江西省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.sdsft.gov.cn/" target="_blank">山东省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.hnsft.gov.cn/" target="_blank">河南省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.hbsf.gov.cn/" target="_blank">湖北省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://sft.hunan.gov.cn/" target="_blank">湖南省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.gdsf.gov.cn/" target="_blank">广东省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.gxsf.gov.cn/" target="_blank">广西壮族自治区司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://justice.hainan.gov.cn/" target="_blank">海南省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.cqsfj.gov.cn" target="_blank">重庆市司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.scsf.gov.cn/" target="_blank">四川省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.gzsft.gov.cn/" target="_blank">贵州省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.sft.yn.gov.cn/" target="_blank">云南省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.xzsft.gov.cn/" target="_blank">西藏自治区司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.sxzf.gov.cn/" target="_blank">陕西省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.gssf.gov.cn/" target="_blank">甘肃省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.qhsf.gov.cn/" target="_blank">青海省司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.nxsft.gov.cn" target="_blank">宁夏回族自治区司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://www.xjsft.gov.cn/" target="_blank">新疆维吾尔自治区司法厅</a></li>
+                                                                    <li class="nowrap"><a href="http://sfj.xjbt.gov.cn/" target="_blank">兵团司法局</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="box flex-1 col-xs-4">
+                                                        <form class="" action="/template/" method="">
+                                                            <div class="select-box select-box-btn">
+                                                                <div class="select-header">本市司法行政网站</div><span><img src="/images/common/arr_11.png" alt=""></span>
+                                                                <ul class="select-content">
+
+
+                                                                    <li class="nowrap"><a href="http://sfj.beijing.gov.cn" target="_blank">北京市司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bafs.org.cn/" target="_blank">北京司法鉴定业协会</a></li>
+                                                                    <li class="nowrap"><a href="http://www.chinabjnotary.org.cn/" target="_blank">市公证协会</a></li>
+                                                                    <li class="nowrap"><a href="https://beijinglawyers.org.cn/" target="_blank">市律师协会</a></li>
+                                                                    <li class="nowrap"><a href="http://blaf.bjsf.gov.cn/publish/portal1/" target="_blank">市法律援助基金会</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjdch.gov.cn" target="_blank">东城区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjxch.gov.cn" target="_blank">西城区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjchy.gov.cn" target="_blank">朝阳区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjhd.gov.cn" target="_blank">海淀区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjft.gov.cn" target="_blank">丰台区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjsjs.gov.cn" target="_blank">石景山区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjmtg.gov.cn" target="_blank">门头沟区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjfsh.gov.cn" target="_blank">房山区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjtzh.gov.cn/index.shtml" target="_blank">通州区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjshy.gov.cn" target="_blank">顺义区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.dxsf.gov.cn/" target="_blank">大兴区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://cpsfj.bjchp.gov.cn/" target="_blank">昌平区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjpg.gov.cn/tabid/84/InfoID/20446/frtid/96/Default.aspx" target="_blank">平谷区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://www.bjhr.gov.cn/publish/main/zfxxgk/jgzn/jgznwbj/20131129141126510181562/index.html" target="_blank">怀柔区司法局</a></li>
+                                                                    <li class="nowrap"><a href="http://sfj.bjmy.gov.cn/" target="_blank">密云区司法局</a></li>
+
+                                                                </ul>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                                <p>
+                                                    <span>版权所有：北京市司法局</span>
+                                                    <span>北京市通州区运河东大街57号</span>
+                                                    <span>电话：010-67081148</span></br>
+                                                    <span>推荐使用Chrome、IE11、360浏览器</span>
+                                                    <span>京ICP备 13016994号-6</span>
+                                                    <span>政府网站标识码：bm13000003</span>
+                                                </p>
+                                                <script id="_jiucuo_" sitecode='bm13000003' src='http://pucha.kaipuyun.cn/exposure/jiucuo.js'></script>
+                                            </div>
+                                        </div>
+
+                                        <!-- /页尾 -->
+
+                                    </div>
+                                    <div class="mask"></div>
+
+                                    <!-- 热线咨询弹窗 -->
+                                    <div class="alertBox alertBox-rxzx">
+                                        <div class="pop-title">
+                                            <h4>热线咨询</h4>
+                                            <span class="close-pop-btn"></span>
+                                        </div>
+                                        <div class="pop-container">
+                                            <div class="pop-container-head flex clearfloat">
+                                                <div class="box flex-1 left col-xs-6"><img src="/images/index/img_09.png" alt=""></div>
+                                                <div class="box flex-1 right col-xs-6">
+                                                    <table>
+                                                        <tr>
+                                                            <td><h2 class="name">热线电话：</h2></td>
+                                                            <td><h2 class="txt">010-12348</h2></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td><h2 class="name">工作时间：</h2></td>
+                                                            <td>
+                                                                <h2 class="txt">工作日</h2>
+                                                                <h2 class="txt">上午9:00-11:30</h2>
+                                                                <h2 class="txt">下午1:30-5:00</h2>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="pop-container-con">
+                                                <p>“12348”热线负责解答市民来电法律咨询。具体拨打方法是： 北京市固定电话、移动电话直接拨“12348”。本专线免收信息费，本地通话费按正常资费收取。</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /热线咨询弹窗 -->
+
+                                    <!-- 在线评论弹窗 -->
+                                    <div class="alertBox alertBox-zxpj">
+                                        <div class="pop-title">
+                                            <h4>在线评价</h4>
+                                            <span class="close-pop-btn"></span>
+                                        </div>
+                                        <div class="pop-container">
+                                            <div class="pop-container-con">
+                                                <form class="" action="/template/" method="">
+                                                    <div class="user">
+                                                        <label for="">您的姓名</label>
+                                                        <input type="text" id="ComplaintRealName" name="ComplaintRealName" placeholder="请输入您的姓名或称呼">
+                                                    </div>
+                                                    <div class="phone">
+                                                        <label for="">手机号码</label>
+                                                        <input type="text" id="Mobile" name="Mobile" placeholder="请输入您的手机号码">
+                                                    </div>
+                                                    <div class="content">
+                                                        <label for="">评价内容</label>
+                                                        <textarea name="name" id="Content" name="Content" rows="4" placeholder="请输入您的评价内容"></textarea>
+                                                    </div>
+                                                    <div class="vertical-code">
+                                                        <label for="">验证码</label>
+                                                        <input class="input" type="text" id="AuthCode" name=AuthCode placeholder="请输入验证码">
+                                                        <img class="verify-code-img" src="/images/wyb/img_09.png" alt="">
+                                                        <a href="javaScript:;" onclick="flushImage()">换一换</a>
+                                                    </div>
+                                                    <div class="submit">
+                                                        <button class="on-blue-bg" id="complaintaddbut" onclick="addComplaint();return false">提&nbsp;&nbsp;交</button>
+                                                    </div>
+                                                    <div>
+                                                        <div>
+                                                            <p>温馨提示：</p>
+                                                            <p>1、欢迎对本网站运行期间有不足之处提出宝贵意见。</p>
+                                                            <p>2、如您发现无法显示的网页、图片、附件等，请及时告知我们。</p>
+                                                            <p>3、如有网站内容错误、连接错误、服务事项错误、信息不完整等，请联系我们。</p>
+                                                            <p>4、非常期待您对网站的新想法、新意见。</p>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /在线评论弹窗 -->
+
+                                    <!-- 匿名满意度评价弹窗 -->
+                                    <div class="alertBox alertBox-eval">
+                                        <div class="pop-title">
+                                            <h4>满意度评价</h4>
+                                            <span class="close-pop-btn"></span>
+                                        </div>
+                                        <div class="pop-container">
+                                            <div class="pop-container-con">
+                                                <form class="" action="/template/" method="">
+                                                    <div class="vertical-code">
+                                                        <p class="des">&nbsp;&nbsp; &nbsp; &nbsp; 您现在处于未登录状态，请先实名登录后再进行满意度评价。您也可以进行匿名评价，北京法律服务网时刻保护您的隐私。</p>
+                                                    </div>
+                                                    <div class="submit clearfloat">
+                                                        <button class="submit on-blue-bg" type="button" name="button" onclick="dologin()">实名登录</button>
+                                                        <button class="cancel on-blue-bg" type="button" name="button" onclick="toComment()">匿名评价</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- /匿名满意度评价弹窗 -->
+
+                                    <script src="/js/swiper-3.4.2.jquery.min.js"></script>
+
+                                    <script>
+
+                                        //背景轮播
+                                        var swiper = new Swiper('.swiper-container', {
+                                            effect: 'fade',
+                                            autoplay: {
+                                                delay: 5000,
+                                                disableOnInteraction: false
+                                            },
+                                            speed: 5000
+                                        });
+
+
+                                        var xzqhcount = '';//定义行政区划jsonarray
+                                        var allcount = '';//定义总的json
+                                        var isxzqh = '';
+
+                                        //热线咨询弹窗
+                                        $('.rxzx .more').on('click', function(){
+                                            $('.mask').show();
+                                            $('.alertBox-rxzx').show()
+                                        });
+
+                                        //我留言
+                                        $('.wyly-btn').on('click',function(){
+                                            if(!Membered.IsLogin){
+                                                modal("请先登录后再留言");
+                                                return;
+                                            }
+                                            window.location.href="http://bj.12348.gov.cn/lawservice/consult/previewadd?SiteID=122";
+                                        });
+
+                                        // 在线评价弹窗
+                                        $('.zxpj').on('click', function(){
+                                            if(!Membered.IsLogin){
+                                                modal("请先登录后再评价");
+                                                return;
+                                            }else{
+                                                flushImage();
+                                                $.post('http://bj.12348.gov.cn/lawservice/member/getProp',function (result){
+                                                    if(result.Status == 1) {
+                                                        $("#Mobile").val(result.Mobile)
+                                                        $("#ComplaintRealName").val(result.RealName)
+                                                    }
+                                                },"json");
+                                            }
+                                            $('.mask').show();
+                                            $('.alertBox-zxpj').show()
+                                        });
+
+                                        function modal(text) {
+                                            alert(text);
+                                            // $('.mask').show();
+                                            // $('.alert-box').show();
+                                            // $('.alert-box .info').text(text);
+                                        }
+                                        // 悬浮框
+                                        var height= 135;
+                                        $(window).scroll(function(){
+                                            if ($(window).scrollTop()>height){
+                                                $(".aside-l, .aside-r").css({top: 50});
+                                            }else{
+                                                $(".aside-l, .aside-r").css({top: 230});
+                                            }
+                                        });
+
+                                        // 通知公告
+                                        $(window).load(function(){
+                                            $('.notice, .notice li').show();
+                                            jQuery(".notice").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"top",autoPlay:true,vis:1});
+                                        })
+
+                                        //普法新闻 以案释法 法律解读
+                                        $(".slideTxtBox").slide({defaultIndex: 0,trigger:"click"});
+
+                                        // 普法明星
+                                        $(".picScroll-top").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"topLoop",autoPlay:true,vis:3});
+
+                                        // 返回顶部
+                                        $("#top").click(function(){
+                                            $('html,body').animate({scrollTop:0}, 500);
+                                        });
+
+                                        //点击li效果
+                                        $('#slideTxtBox_hd').find('li').on('click', function () {
+                                            $("#hd_more").attr("href",this.id);
+                                        });
+
+                                        // 地图
+                                        var beijingJson = { "type": "FeatureCollection", "features": [{ "id": "110101", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@DB@DP@NCHB@XD@AED@BKB@@CD@@AV@@EJ@@EAB@KB@AA@AP@CDJ@@CD@@EACB@FBD@BAACCCAG@QI@CB@A@@@BE@B_BWLBN@@CE@@AB@@KH@@AD@@AC@@CIB@AC@DWCKi@MAE@@CD@@@@EB@@AA@@CC@BGC@@AG@CBM@@AI@@HC@@BC@@DE@@DKCIBFB@HfBAvCB@PG@BHA@@BB@ATJ@@BF@AJC@AXCB@bMA@H"], "encodeOffsets": [[119181, 40920]] }, "properties": { "cp": [116.418757, 39.917544], "name": "东城区", "childNum": 1 } }, { "id": "110102", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@}EAB@HI@@DCBOAOBIC@NB@BLB@AFF@AB@LX@@DC@BJCBBHAF@VAbE@@BA@CDJDLABA@BDADBFBHADBAF@HHBBC@IJ@VHAhT@BJZ@@GGA@CCABCA@AMNB@aDABWD@BIE@@AI@BSA@@AB@AGH@@ODABueA"], "encodeOffsets": [[119174, 40829]] }, "properties": { "cp": [116.366794, 39.915309], "name": "西城区", "childNum": 1 } }, { "id": "110105", "type": "Feature", "geometry": { "type": "MultiPolygon", "coordinates": [["@@@B@@@HCCA@BDBHAHA@A@BBC\\IA@KA@AJA@GpARB@AFD@BGB@BAD]`D@FF@ALB@AH@BDIB@@ID@BKB@@CC@FYB@@AA@BWB@@@BKCEA@@BOABCFEE@BIC@@AGDC@AH"], ["@@@JI^sxHZBHBADGD@FBDD@DIVFDBBFA@@BA@AJF@AFDB@DLBdLJ@@AJ@NCD@@DFBBAD@@AD@BFB@ABBDBDC@@DCB@JHBADBBABJDADDB@B@HFAFGTC@AD@DCZ@HEJIHCVBJAJELKJEJJBA@CBCBBDAAAA@DECC@AIC@ADE`MFCHID@JEB@IFJ@BECCp[HAZAHANGEGNGJFLMBKG@AEKA@ABELB@CBAAEDQB_DMMHKBCIFI@CG@BCAKGBACLQSDBAA@BECAF@@IC@BGCABAD@@AC@BCDAEKEAG@DC@IZ@BQI@@GIQBAD@BCFGAAD@[US@BGF@KKAKBEE@@KAA@BMB@EOBHHSAAFGD@FE@@CC@SBS@EDCCAGAAEDE@ABC@@ALEACE@@CE@@DK@AFUBAEE@BGC@@CMED@BAE@@AGAABCA@FC@AD@CE@@CG@AGQEC@IJKAAFQL@AABQCADBFDBGFACG@@FM@@BI@@BN@BJFBBBA@BDDCD@BD@DD@AAB@@DF@AHJB@BB@ADF@FCBBBCDABFDA@DD@@BD@BFABGACD@BA@@AGF@AC@MH@AA@@CCD@DA@@BA@@JD@@DA@DLCXD@@BJA@DD@@BC@@BG@@LA@@BF@@DM@KAAXA`F@@A@@@BDAJ@@RBHDDBDABC@EAA@BD@FC@@DI@DCO@@BBBA@@LBA@FI@@FU@@BC@@DA@ALC@BFC@@WGAMDO@@CCABFB@ADDB@DHB@HY@"]], "encodeOffsets": [[[119390, 41009]], [[119175, 40933]]] }, "properties": { "cp": [116.486409, 39.921489], "name": "朝阳区", "childNum": 2 } }, { "id": "110106", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@@KBAE@BEA@AKA@@MJDPAPBDA@CJ@@GBA~F@GEAJALD@CF@@CD@@AD@@GJ@@BN@DAH@@BD@AHD@@DB@@BA@@F@@C@@DF@NBhABBB@@CC@@IB@@AB@@CDC@DB@@BNGD@@BHE@BB@@ADCJ@AEC@@AC@@CCBAECBADAAEDE@BCA@@AIABGE@@CA@BBC@@CACC@CDACB@AAEAAIM@@EG@@EA@IFAIHC@CBA@AA@BGE@EB@AAB@BC@AKB@JDDEBCB@@DF@DC@AB@@CA@@CJ@@QCA@BK@@IA@@CqA@CB@BGB]MAA`KA@AKBALO@@AE@@LCHF@CLS@AJSBBBK@AIWACEG@@EAG@OG@MW@CG@CDCBCDDBADC@IZBBA@EAAFJDCDICCH[CSIC@AFCDE@@EIABFALDF@DAJONCNEBUBA@BCCAY@@IDEKIEABICA@CEAACAA@[AOKB@DG@EBACG@BDC@BDKBO@ACCOGKABCECBAAKA@BE@ADAABA@AC@CCCDCCABBDA@AAG@EEC@@AG@AFA@@GA@AHCBBDCDBBB@BA@FA@@AC@@BFLD@BA@AB@BBD@@BBA@BH@B@C@@BFBGBBDE@ABI@AB@AA@AB@HE@CBAEABM@BEGACB@EAFAAC@BAACI@AFACA@BHCLBBADBD@DA@@B@DADANBHDBADC@F@ARB@@FGFAA@EA@CHA@CAAB@DAFKDEDMBMHDF@DHDDARDANEJHFPDRIHBJDLADB@DBDNBPHLBLFTFNBFAFD@FD@PCHDBCBBDEBBRGVAHDH@LGDEBCDBDACHF@DCH@@JH@@FJ@@LB@FABBDAAD@BH@@DB@BBB@DALDP@@AD@BD@@SBAFFHB@AADH@BBEBFDJBBBZ@"], "encodeOffsets": [[119118, 40855]] }, "properties": { "cp": [116.286968, 39.863642], "name": "丰台区", "childNum": 1 } }, { "id": "110107", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@HIDCACBAHBJFBADODCNJBD@JJEFC@GCCBEAEBCDCF@@ELEHABGHCHIFCBCDA@CF@@EE@BIA@BA@AC@A@@AFCC@AC@@FAAAOA@CA@@KD@DCND@AD@R@HAJ@@BBDRABDJB@AAADCG@@A@AH@@eN@C@@CC@@BO@KCCBA@AAA@@CG@@ABCCBAAEBA@@KI@@EG@@IG@CDE@DGCBCAADCFKHG@KCUBMHAACFAACDKPKFABALKFEHENCDGBMDAB@HEJICADED@BGJDLB@B@JDEFBBEH@DDABDD@DL@BCB@BGDETJHbDNDFANJ"], "encodeOffsets": [[118940, 40954]] }, "properties": { "cp": [116.195445, 39.914601], "name": "石景山区", "childNum": 1 } }, { "id": "110108", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@AC@EHCBCGAYAwGtHYBGAOS@@ABeUGI@@JADGA@GBECAGBEACACB@AABKBICDCB@@AF@Ba@UBEAGDAAID@@Cq@AAIAECFA@@A@@AG@BC@BGAEEAB@T{AYB@fG@@B@BH@CDBB@BIAACQBAC@AI@GBQ@C@@BMCCDC@@LB@@DPBBBEB@@BDD@ED@BB@D@@BABB@AJF@@FE@@DCBADEDGJGDAHGBKF@FE@CDADBFAFDD@HEDIF@IACMICDCPABIEGAABBDCDGJDB@DDBLDVDBFDDCB@DC@ADEDA@CBAFIDADC@GDEAGFCDQHI@KAC@@BMDQAIDE@ECUAGDC@GH@FADGN@DCDHN@FKHAD@FADGFCA@BCBEHCHCB@BDJFB@DDDLFBHNDBFDBBNHAFDDDDDJA@@HBFBDEB@BCDAHDFAHC^DDCF@BNh@bF@DCDH@AHCFANNDLF@HFF@F@BPCB@DHRBBMDG@KHEFAFFB@dMZ@A]A@@EE@DIEG@CHCNBJEDBBDCFBDJA@ABAACBA@C@CFA@CIABCDB@EPBBCAANYVHZmFDFCHB@CJDPMDBBAHFLBDGF@AJJ@AHF@BCDBADLBL@@FP@D@ACB@BAJ@FA@DBABGICBAEA@BAAABCA@GIADKD@@CJ@@EFBBAH@JAD@"], "encodeOffsets": [[119185, 41003]] }, "properties": { "cp": [116.310316, 39.956074], "name": "海淀区", "childNum": 1 } }, { "id": "110109", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@GCODC@@EECEBMASEKEKAOGMAAC@CCAKBICGAQJOCGEFIBMQCCBGC@CCEG@IBGA@AIAGDCEE@CCMAAB@HAHMBgSCB@B@FIHFPBFAJLFDDFLOB[KBC@@QABDBDC@MGMAEBCHEBG@_HCBGNBBPNLLRHAFDLINI@OESAI@CBOA[HWCIEEICCOIMAGCIAIFCBEAQVOFO@GLKDGBICe@CBEHKCCCWGACcOSACCO@C@GCK@OEEGMEAIECM@GCYCKMG@IGQ@ECIECGIIG]MGCEBA@AKIEOIEEIUAQ@CFGBIDEBOF@FCBKDGDIAGLSDE@CLADJFNV@HAJLDBLE@QJMBAFBFHDBFDBFHFDADSPEDCFGDC@EDGBADMH@FEFELQFE@CBGBEDMFADKBGFIBCCE@C@CAEB@DEFDH@DDHEDAFDJBHB@DHABFDDFHFNFD@BCH@EPBDEFEBAHFHDDJJDHBJDBF@BBP@THDFHBHHBD@BBBRJD@BFH@@DJLADLDDFTLVDH@BCB@FDLDBDDBBFCLDBBFF@HFF@BCFBBBDDDBBADGFAF@LBDHAFDHAFDA@NJHV@NEJDDADAH@DBJCL@DBCHFH@DTJFC@AbBHDFBF@FCFDD@FE@ADCLDTC@DABK@KFJ@LDLAPIJDLALFBBHDDDDBHJBF@DGFADHL@FBDFBJCFDFBJVLDHAHD@QFCXSBCHG`@LEB@NIBDCFXELBBBFCLDF@LIFABBHCFEh@FEFDLABBFELAFEDAFGHCNQD@DGDA@CBCEACEB@NCD@AAJG@DBFD@HB@AAE@GCCDGHGBEAABA@CBCLFF@@DFBPDLADBDANEFBDANC@CJATPFEHJLAHDD@DADGFGDA@ADBHEBC@EBCLG@EGMDC@CHMBC@EHGD@HCVBFDF@JCRBNC@AD@LBJ@JCDCD@DCHEFBHCD@BCJCBEDAB@FCBCD@@CDACCAEUCKCCA@CQKEBMCaCIGFSHC@ADA@ACKC@ACCB@CFGAAFEICA@A@CKHI@AFCBCJDFI@GBANCHADCFMFGLEBKBALENO"], "encodeOffsets": [[118956, 40847]] }, "properties": { "cp": [116.105381, 39.937183], "name": "门头沟区", "childNum": 1 } }, { "id": "110111", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@NGNAFCLCBE@CBADBB@DGB@@FBBHE@EA@BQE@D@BCCAAGBMBC@C@AB@@CACBCAADKAGB@BDBEJ@BDABD@BBBE@FDAHBAFN@BABFDAF@@GBAB@@BBAJ@BAF@ACHAEA@AD@A@G@@AAB@AC@AAA@@BABC@EK@AD@@BB@@EABA@AADCACDABGB@@HB@BEH@@BD@FFH@BBB@ACBADDDCDDD@@BABBBBCF@@ALBBBDADFBAHLDPBDP@LAACD@ACH@BDFAH@@CLABP@\\BBBDFB@DDBAJFBLJCF@JZ@DBADB@ZABCDMPKBI@CEGDIAG@K@GDEAEBCAEDQCIBGAIGCAEEAACFI@EDCACBCEGBCCGIGECACGGBADACG@ECKS[@AHCBCIIDKKU@GCIH]AMBCAK@KFMBCBCAEHEAMGKYAAHA@@DE@@JCB@E@F@EA@@FAE@@@FA@@EC@@FE@@CE@@DK@@DOA@II@@@MCI@@BKABDCBCE@IA@@CA@@GC@@AA@@HA@CGAAGBAEA@G@EA@DQB@HIAEEO@@JIHBGED@E¿EGB@DCBC@AAEBBFA@DNA@@DIAIDC@AGB@@AG@AICAEA@BI@GABNE@CFA@BHA@@HGA@DKAADCA@GA@@QB@@ECEDEBAE@@EA@ABI@ACA@@GGB@CG@@EC@@FE@@DG@AFA@@JAACDE@@FI@@HE@ANCA@DCB@FKBAB@DKBCBE@CDAKCA@AAEFCAGNACCB@AEEIDACEB@CAG@DA@AGBAAABBBC@@BCAEBKABIBB@CBA@KK@DAA@AAD@CGGB@ESB@CA@@AK@AHGCKN@AE@@CC@@CGB@AAMC@CC[@@KGACGG@BKB@BCC@HABEIABAD@C@BED@@CFDFA@CC@@AFACCODK@SDBADA@AE@BD[BKAQHAAIDIBDCAAFCCC@@EFAFE@EACDCA@AACC@@@@B@@@DAB@BEDB@ADEDADEXGFB@BBCFABD@@DC@@AID@ACBCAADE@DABGEBD@E@@AC@DBC@D@A@AF@HA@FBID@BD@EJBBC@BAC@@BIDCCCBC@BBM@GBEDFB@D@BDBFAAB@H@@BDEBD@A@@DEA@BABBH@DABIL@LGJQFIFGLAABCAABCCGMGACG@@BG@CCG@A@AHIBEABCCCBAC@MBEHGBKEIAOBCCBAMCGCCIEBGAODBFBDKFCH@@EHODEJKJA@KCKG@C@CEEAABCMGKC@ABC@ACCE@BFEV@JDHJHHFAD@JCBDBADADDFADBDKB@DIBCJEFSBAAAEA@MBEDICAD@DBBBHDDBDRN@BIFBB@FDBAB@DFBDDABBBF@@BDBCBB@DBBBEDDDADCBGHE@FHBFCLALAHBFEFBFHF@FE@GFGBW@EEGHE@CBKHE@GDKDGL@FCFBLGDGCCHLDFLTHRGLBdRFJHDPEDB@CFADCFCJIDAB@NJlHB@DDHBPAHB@BJHDFJDAJFFR@VBFJJFFPLJ@BABDFNHH^JJDHJFFDR@JHH@LNZDHDN@FDBJNFFHPFL@HDD@P@DDTBdPBDXHDDLDFGDAf@JDHALCHKP@PERUFBDAJEJBHDNBPJDDFJJFXD\\GPBDAJ@TBPFJ@JMCKBEQGKKOMAAHMDA`GH@FADGFANBNHD@ACACRB@@AD\\LPAEKCCKEBIAEEOJG@IF@bRDBNABG@GBANBDDF@DFHCJB@BHBJAH@"], "encodeOffsets": [[118840, 40803]] }, "properties": { "cp": [116.139157, 39.735535], "name": "房山区", "childNum": 1 } }, { "id": "110112", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@DDH@DJ@JJB@BLB@GH@@AD@@GJB@AD@BAH@ABFBFGD@ABNDJDDBBGHEHFBABCF@BGD@@CB@@BJBDAFBBAJ@@ADA@GDBCNDB@AHBBCHBNHFLBADDNEBGF@AFJCBFF@@AHA@FD@@BF@@DL@@AF@@CBB@GF@@CD@DGX@NCCEBCJK@KAIOUAKEGIGAMBCJGdKDCBWAO@QAQFQ@UDGPKNEF@@NH@@HHBBQF@BEP@FAJOHIFBJIFCL@BGB@DKRC@ELCD@@BJA@FJ@DANKBEDAJEJADBBB@DCHEFAHBFLB@BDBNGNQDEBMDSAKDCRKFCBCO@DIA@@AB@BCZCDCBGCBGADMGA@BE@GFI@YAIIJMOGDCCA@AEBCJCCICBGEADELB@E@@@CD@@EB@@AB@DCCAFEGA@ED@@CH@@IIBSEBAEA@AKAM@@CC@AECCDCD@BCA@BCAKB@BGCAFAB@HICADCKCDEB@ABDBBATD@AD@JMIADISCBACAADGACBK@SGDCAAEFOAACC@@AU@AIDA@QACQCCABGC@E@ABAABCIE@BECFEECJGNMGABC@EG@CAICAFGDKA@AGCQABCYABCBCA@DIEB@KB@@AI@@AAA@AI@C@@FEFALGB@DCBEDEFIFQFAAEBAA@CE@@AE@@DI@@DC@AFE@CD@DGFDDA@@HD@AHUBC@@CGHAHEJ@PDRANI@IB@BABM@AAGACBG@GAAAC@@DC@@FDDBFEFGA@FI@@EG@EDBNI@ALF@AFJ@@JIBE@MPANKA@DEFM@@CIAAEA@@DC@@CGA@CGAAGCCWA@DQAA@ACKA@JwBUGIDDDKDFFJCDFBNKD@RBBJCBBB@@FEAGB@BIBHJQB@JDPGHDFDCFIZAAJE@@DRBAFEAB@MAIRNFIJ@B@BCBDBCBJDCDHBCDADF@@DHB@BAPCFCBAHBBFB@DG@AFF@BDKF@BD@BAF@FCBBBHDDFCT@TAD@@DF@@EHCBETBGGPA@FNA@ABB@LF@AFBLLLE@AHT@\\VC@BBEHADC@ABJR@HJ@ARY@@JCDH@FBFLCBADD@@BC@ABDBAHD@@JE@DBAFB@ABTCKRBDHABLADH@@DEJDJLANGCNA`CRBFAB@DKAAF@BLBBFH@@FAHKLIEMHFHMHGB]BOH"], "encodeOffsets": [[119394, 40978]] }, "properties": { "cp": [116.658603, 39.902486], "name": "通州区", "childNum": 1 } }, { "id": "110113", "type": "Feature", "geometry": { "type": "MultiPolygon", "coordinates": [["@@C@@AIA@ICIG@CCcVDDAFI@JEA@IFC@ILGFWHEFAB@BJD@BDDCFB@BBABvb@GB@BIB@@LJBD[AAB@B@BGAGACB@DDBQD@HC@BD@AJF@EFADLBLm"], ["@@MDW@CHC@@DE@@HAA@DE@@BK@@CE@@AC@@EGB@BE@AEIDBEE@AHOFACABEKMGGAADGA@BCADMCA@HCB@BI@ABEACBIA@AA@@DC@AHE@ADABGEGFAHCAICMCBAC@EHEABAG@ABC@@BIA@HC@@BG@@HGAKnD@@ADBBDAL@@A@AXB@@BA@EZD@@DA@ALC@@JA@CJ@ABGA@BKE@@E_CC^ABA@AHC@BEA@BQHguaA@AAAD@DABIIIFKLIFIBUAGDIJGFY@CDC@@BSDEHEBEFDDH@FDD@FBFAD@NJBLD@ALEJ@HCDC`EBCHBDH@DFHADPKD@BCBMACDJVDADJJLCF@NEJYRD`FHN@@FEPBTJBLJJAD@FJBHB@@DJ@@EX@@AF@@FBBV@JLAHABCJHCLB@ABBH@BCJDL@FD@EACL@AGLA@BNAFC@DB@DBFIJ@@FHCACDA@EHEAIDAJDVCBDB@@PF@@BH@J@DEB@@BF@@AD@@ALB@DPB@BLAJB@CDEA@BGFCBIC@@C@EEGD@@EHB@FBB@AB@DI@BLANNB@JFCDDFHDDADD@LLAzzDCCGB@BBB@ACB@BBZG@ALGBB@@@CDAAAB@BBD@DDDACCFADFRH@FB@@HDABFB@BFA@@BBLB@BEFCBB@BHAFDJC@AHA@HB@AIDA@AN@FA@@@BGBND@B@D@DDFBJFB@BCHHFDDFBXBDCHKACHQDCX@@QFKDCAA@EACFEFABE@CJG@GDCDEDADKLABABAIAACC@@CJADCL@BIBCJCDDPCDF@FBBDBFFHADCBCFCAE@CAABAACBECCGDIA@ADEDE@CDEDEAABADBBGB@@DF@FAFE@GG@@G@ADGH@@EL@@BJ@AENQHMLIGKAEEECG@MECLECKFIHEEMC@ACCANE@ACB@ADA@AJA@EDB@EG@FE@GBAM@FCD@DDBAF@CCD@CGAGC@CKKBCADCE@@BEBACGBAC@@AED@@OC@_S@N@@@GA@AHA@ECABBBE@@BF@@DEAADE@CFC@BGA@ADA@BCC@AGIA@AAACJAAAHK@@BMKSA@CCDMAEBIGIA@@E@MPIBDDOFAEcA@EQC@MC@@MBECB@CI@@DE@@DACOBEEUHBDS@EC@KCA@A@ECICE"]], "encodeOffsets": [[[119409, 40992]], [[119575, 40975]]] }, "properties": { "cp": [116.653525, 40.128936], "name": "顺义区", "childNum": 2 } }, { "id": "110114", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@@G@ACABCICBAAABCGA@IDA@CD@ACACBAA@AEC@@BC@ABEA@CC@MDI@@BI@cKKA@CCABEE@BIB@@AB@AEECSCCJG@IBG@ABEA@FI@@DC@CLJB@HDBBABB@AFBABJDAHAB@CEBI@ABA@BDC@O@@EK@KABCCAADE@BGI@BIE@CHKAGEABCAONIC@DGAEDECYnUGMZBBADOA@FCAADJB@DEB@D@DABBDAB@BIBACDEACCAIFMAGD@DFHCJF@@FB@B^Y@cNA@EEEBGF@LCHANQACGA@OD@A@EEE@GKEMCBMDEBGG@DC@CaEg@AME@CD]CGDEBGCCBADA@CFEAGA@@IBCCCCECGBAMCAAEMCAGKECC@CEACG@CC@GCKBGIEFSOIB@DMDCBEAMFCBCAKBOCEA@CE@KEAD@DABBBAFGHCHDD@HBF@BGAC@AE@CIHBBC@MDA@DFFBAD@DCBCHC@MRGDEHCBGFIBEFAAKBECEFg@EFGDAAEBKJE@KAEBBJGJ@BCB@BFBABABCACBAFFDFHDHDFKHLFBDTEL@DD@DBB@DFBBNDDF@HHEF@DDBCJB@B@FJFFBFLJBDADHAJCJBDBBJDDAD@BLJD@BBD@HFHBD@NCDBH@B@@DF@P@FBDDBFFDCBDFDABDB@BFFADB@DFFADCB@JF@EJ@DADB@@DD@FFD@B@HBEJC@CDA@CBE@EDBFALCBDBHBHFFBBBB@FFF@B@DCFADBBFF@DHD@BBHAFBLKBED@@IJQF@J@DBDHJ@DAJD@DD@BDAFC@ADJFABDD@DFDJ@FBHDF@B@@ABAD@FCFILBNCNDJA@ED@HG@EBAJMHAFBHADB@BF@HF@BCF@DCDBHADDFHFGBEAADDFFBCDABBBDDD@D@BADMCAAEBAJBDB@FFBADBBCFEDIDDJBDCBBFNDF@DFD@DADBF@DFFBBAFBFEHDBBH@BDBBDAFBJ@DDL@BBABDDBDDBB@FAJBJADCBCDEJFJ@DDHC@EBAHF@FDBABDBFBBADCD@DBH@DBXMNJBBABBBAD@DAFDFBAD@@AD@AED@AGHBFDVDPCF@BAFAJCFGD@LG@ADAD@FCJ@DEFCAAC@DAAAEBG@DAGE@INBBBHD@CFBLEEKCADEBA@CDAAC@CACBCCCC@@CLFJ@AFBBHBBAHDDCFBD@LGFDBAFAFBB@BCLCFCJBDBHCL@HHFCAEFGBCF@BABADCJE@AACEACIEAAECABAHABEACDCAABCAIDAFBBADDF@FCBBJE@ADAPABCHC@OHELEH@HBJA@AC@@CA@AGEIC@IBKIIAASFO@EM@EGC_ZQFI@MDEIKCICBIUDCNBDA@ALCCOGBCEG@ACDGFAD_DC@GFIBI@AC@@ICCOGEBEAC@ECG@CCFE"], "encodeOffsets": [[119263, 41053]] }, "properties": { "cp": [116.235906, 40.218085], "name": "昌平区", "childNum": 1 } }, { "id": "110115", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@BAH@@CEAAABGDADEBO@AGA@CE@BCDCGADCICDACADA@A@AJIMEJQNBA@FBBEQA@CF@BIYBEJCDCEHGCO@IRAGIJA@AHAFB@EA@AAIDAA@QLCAMCEIDEELCCCJCVHxA@ILBBDB@RB@CXBDDBHHB@DHB@DD@@CB@BFJB@DN@FE@CLBBMNOF@JA@II@BEE@BKJ@AMFCH@@FJ@@EHBFEAECC@ED@@CD@BBHBH@DAHBBBN@BA@AJAJ@BMCQ@QFGBGHG@DD@VABGC@@GB@CCHE@CEA@CK@ACICCDEA@FIADMB@BEC@@@HEF@HCBEB@@BDAB@@CFA@@E@HA@AD@BEAFDE@F@@BICAAFA@BEAB@AEABAA@CBEA@AGA@@K@EBADA@CHC@ENIG@DG@@ACAAFA@@AA@@BSD@DI@E@AAGAA@BCEAAA@BG@@HA@BGEAAFE@AF@AGA@DE@@IMA@BIB@BE@@JG@@NG@AJGB@JK@@CE@BEGAB@CA@BC@AFBCADECADKDF@K@@GUB@AE@@GD@@CB@@ABAGADEC@BEA@BAIA@AIA@AGABAIA@AG@A@AFD@@DAFCABAEABA@@BEA@@GABIB@BIB@DE@@CEA@CEABEC@BGB@@EAACA@GL@DIOABCE@BEOABEC@@EC@@GA@BIIAEBIA@AC@@BG@@FOA@BQ@@BC@DID@BAAA@CB@DCBGEADEAA@BG@@@A@@AE@AA@CG@@GIA@DK@@CY@GABED@BECABEF@@EBEUEAFOAANDB@BA@@JC@ADS@@BM@DBABG@BE@UFA@AD@ACD@@CJ@BEHBJSG@CACOCB@CCABAA@BETDJHFME@@BCA@A@AD@BEB@@BJBABD@ADB@@BB@@BF@BAH@@GD@CBF@DE@KA@BIJOFB@CCEC@CA@GKA@AE@@AI@EESHUDIDQAGDGBGC]BK@@BI@@FAAUBAEIBADE@IBOHEFAFGDAD@FKHAHKH@DCFE@SDMBABBBC@AGE@GJM@OHEBAJCFCDOJADDFED@DFB@DDFABCABHC@BDBHCN@BADDBEFFDBDABE@CLK@DF@DOEA@CDIVHLBNGFBFADADEN@LBLADBNG^DJ@HLVCLJJADGD@BT\\DL@FDHCBABHHBDFDJHDHADFHADBDCD@FEJBDFBBFHDBJAHDJCRBFADBDCH@VJB@FF@DCBED@TJ\\DDGJDDCICBEFBB@AAHSA@DED@BCCADCDADCH@@DNXH@@PBH@FH@DFXBBJL@AATABIT@DKE@DG@KF@@BP@BKLA@BLBB_NBA^AHA@@DrB@DB@@JL@@ADB@RI@@DB@@DA@@BCDE@@CA@ADCFICA@BLD@@ABA@BFAF@AHB@@BAB@DGDBJJEB@@FH@@DJ@@AN@@EH@BDHECAAEBCRDBA@BRKBELBJIVFBHH@@DF@@DBCD@@EDBBAHB@BF@ABC@NF@DD@AHF@BFVABEL@@CF@"], "encodeOffsets": [[119332, 40781]] }, "properties": { "cp": [116.338033, 39.728908], "name": "大兴区", "childNum": 1 } }, { "id": "110116", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@A@@BABGBDBFF@DBDA@ADFDBDEJBDEBF@@DDCFBDF@D@BCF@FED@FADDDADCBDD@DDDADDBAFHD@FDCDB@DBDBDBBFFKDCFIJAF@DCB@FLDNAJLH@DHD@LJJAFBLCLDFABAVFL@FCHBLCDCACFGAACBDCCA@CD@@ADAD@DAJBEA@AB@BGEB@CDCF@AADBBCDADDA@BBFBABJB@DJDF@DAHDDAB@DCD@JCN@PHP@AAD@@AHB@DDDAD@BBBPCFCTALBBAD@BCHARDP@HJFBDDD@@LMJCFEBAFKFAFABAFK@IEIAEBCACBADA@EDG@CBEHLLHLFDDDHDBHHJ@FRBFBDHBDLDDJ@DDFH@FHBFJDCFFEDBBFHJDBAJJF@DABA@DDEFB@ADBFD@BDADDB@DBB@DBD@DHDPCJBB@D@DDFADAFAFDDH@JSBABC@GFC@ADE@@DAD@BIDAHIFG@@GA@ADG@@BE@@FQDDD@DEBAF@FGBKBADGGABE@GDEAABE@GJLZHBHHH@DBBDCDAFBDFBDFEJAFDB@BF@BDBDBDATDBBFDDODCDEB@HB@@LCJICGHKDCDADEFCAEBGAEDE@BDKPBLCD@LEDG@CBBDABGFKFADBB@FABCBAJUDG@KHADKDEFANCDCJEFMJCH@FGBIBADEDEHEBIHAHCDCBADMFIFCFC@EH@DCDKF@DBH@DARHFDJDDLFDDT@DHFB@DLBLGDEDAAEDEFCBKLOJEBEDEL@RKLFJANDLIXBDBTADADET@@DDDDFCDBDENALILALKBBJMRAHMHDHDJDDCLDD@FDD@HB@DBLFFCBAHADCBAFBFDD@FDPIF@PCH@HAH@FFBHJAFBLHDFNDJEP@HBDJD@LCJGBAHCHGFAFEF@PC^PDH@HDPED@DDJ@DDD@DFF@FBDCDBB@J@BABEHGB@D@FBHBBDH@FCBRDLLLABBHEFDHABAD@HCDE@CHCJELADBHGLAFDHBDGAEHGBEAEBEFGGMEACADEACIICAAA@KA@BIAGFEGCAECCAILKHC@IDABIACHAHKJEBIJCJBAEFEF@JCIKCICC@GH@NG@CDA@EHEL@DCDBHEF@HEJ@HAAG@GBAFANFFIJ@FABEJIHABELEBEAGDA@ABCFAAKBEDAD@FFDFDBP@BCDC@CDAD@HBHABBHEP@BENALM@AACLCFCH@D@BEHCDEAABEAGACDAHABACACCEAC@@BGBCECCEA@BC@ECBABA@EDABCMCABCAAEKAAGAASECBA@CCBABCBGD@BEE@BCCA@AECCECCE@E@EACDI@GAEEM@OFABEBAFGFCIAABCBCDKDC@GDADKAOBCAC@C@EECBCAC@CAECAG@ABEAEFIAIHMACEKCAGIAMGKAGC@CACC@IE@CE@CE@ABC@A@CACBEECCEFSAAAMDEEA@CAAMG@AACBCHCA@BE@EC@EBCCAADED@BEFADEBCEGDCD@DA@CEEFEECHIACBCDABSICAECCO@EDECCBK@KCACFGQBCAE@@ABAC@CCBCBADB@DFBJ@DDCGFCDA@@R@VGDCCCBEHI@AFCFAJIIEAKC@EACEGC@ECK@EBCAA@CIEAEBCFABCNGKBEDC@@KDCA@BCAGBCFDDGHCDEFAPAABBBDBHCAA@E@@ABC@DCCABEAAFAB@@CD@BEGCHAACGFIBDEF@BEBAAUFKPDF@ECNEBBB@AA@AWII@AGGA@CAAEAGFCABAF@@CACB@MGDA@AD@@HF@@GACB@CEDAAAHAEEKGAGHCHEL@CMRAAIF@CSA@@CC@AIP@@E@AZHBKNDD@BAA@JA@GD@AEH@@CJ@E@@CHIACJ@@ABB@CA@@BSIKOEBQUAAB@EGA@EG@ByyKB@KCCCBGCCEDCIEA@MMKB@ACJA@@BAA@EGA@FC@FH@F@DD@AJEDAHB@CF@DIAKB@AOA@CKA@BC@@BE@@AA@CFI@G@@AE@@OA@ACUDICCBBJGF@FCBBDGD@EI@EJCAA@@CEDMB@AKBBHK@BD@FECK@ICADG@AA@BKAGDDIBABGIKU@AA@EE@@BW@@FE@@BIBGAG@KFGF@PGDADOBCB@BIFAAEDE@CCABEACBBJADBBCDBDAFGBABDBBFFBDJFBBD@BIFCDABABE@ADEHBFEDGGK@GDCAIAEDKDADA@EAEBABECKHC@EACDGCABGAAABEI@KE@DD@DDADBD@DBDCB@DABCFDBFLKFEA@DGCAAMA@JHFCBH@FABBCBD@BBEDCFI@EDC@CB@BKHC@EHIDEBABE@ODUCECGABHC@BFC@@BC@ABAA"], "encodeOffsets": [[119081, 41362]] }, "properties": { "cp": [116.637122, 40.324272], "name": "怀柔区", "childNum": 1 } }, { "id": "110117", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@@GDEH@DDFADBLABEFABCDIF@DAAEBA@EDKBEHGACDAL@DAHABAAEAACEDEAE@CFGAKVKF@DEHE@EBA@CAA@CAA@EDCBEPBBCJBDBF@DFBA@FF@@@H@FBDFFBFG@GDI@ODEAEDC@CFECSFGDK@CF@FEBEHBLFL@DBFCDBDCFAD@HEJBDCBA@CBCKAK@CCE@B@AADCAIF@@CBCD@BBD@DCHA@AEAEBICBB@BABAACE@CBA@ABCF@B@@AAAACBEH@BDDBDA@AJHDCD@FEFAAACA@CGBIGICFCAAO@ABCACDDGAACBEFC@E@AACA@AAA@BAB@CE@BDD@CBBBCB@CCA@AB@@AAAEDA@G@C@ACDA@CJI@EFGAAC@AAIGCCH@B@CCCAAAN@AGACADC@EICAEAIBCAMA@FCBC@EHIEGBABCAIC@IAAAECEKG@EA@CBC@EDG@CACEC@AEEABIEEGBADCFMDIA@DC@@BGBGGGBGCCGMGAGGCBCACKDM@@KFC@AAADAGACCC@GE@EJ@ACCC@EIACCABBDIBCDAHCH@BBBIF@A@AGEBCHC@ACA@EGC@BIB@BC@ABEBID@AEBIDHEGKQGI@GCG@MDEFKHCCEDOAEDBBECDFEBEAAAW@@KC@AGC@@HQAC@BGMABAE@ACKB@CEB@ID@ACCA@AMAABICKMKGDII@BGE@AFEA@AG@@DE@@CUA@FOHMDO@MCCDBB@HD@@BA@CHGAAHC@@PC@BF@@BDHABDFA@AF@CDDBLADLD@BHDHC@DDE@ABCCC@EDN@AB@HEFH@@FCA@FIB@BCB@BDA@BMFDBBDD@FNGFEJDLKFFD@NDHFFBFHLKJGNMRBFI@@AK@@FG@CH@B@HH@@HEFEBE@@CA@AHCAABBBCFCF@DCFCF@BJBHCDDAFBDABBB@DBFEDADCBDFJ@BBB@DBBDJBDAFEF@LJ@BFBBBJHBDBFGFEDOCEFGDEDADJJB@HHDB@DJFFBDDAFHFH@JFP@ABD@CDDBBABDBCBBF@D@BDD@@HC@@DBBDDDBBFFBAHCDAD@JFBDLFBBHDBDDDFLBJADBH@BDJ@F@BBFAFGHBD@FHFDN@@DHFD@NDFDBDHBBFFDHBDCNCBCDADBFADBLBFFF@DDRDBDD@DF@DNB@FDC@BB@ADB@VEDBBDDAJDF@DBABH@RAH@NEN@NHHCD@"], "encodeOffsets": [[120038, 41345]] }, "properties": { "cp": [117.112335, 40.144783], "name": "平谷区", "childNum": 1 } }, { "id": "110118", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@DENABAAIAABGAG@ACDC@BEF@HGL@bEHA@AEC@ALYCEE@@AFK@CJ@HEBAJABE@IBCRKH@BCHA@CFAHGCI@@FABCPABCDAPBFCZIFCNALDBAP@HEHFBFJBFDVAFDL@FALBHCJFJAPFBBNBFBF@FBBABEFC@ABCJBF@H@HCF@FCH@NDHCLADDD@DDFAD@PKHBBFBBDCPBHCLBFAD@FEN@BC^KDGNG^FFDD@NIJKJCBAACBAFAJEvCF@DAFBLDJBFDD@BBAFDDFDBDdBJDFBHFNALFFDJADBF@ZFHAJBFCJ@NGHFFC@EDEH@DBL@@AJ@PEHBDBD@DBJBBDFCVEHEBADANIJG@IGAOCFKEECCBC@EAAS@IEADM@EJBHGBAFGD@AE@EDDB@BA@Q@IABANC@AEBCCDIA@ACBEAIGCBC@AMBACCAO@BDEBFBGFBDADBBCBC@GEAKHI@IAAGCEKCA@CCEDGFCBGFCAEFQFAHA@GQMGBCBCACDG@GFCCAEOEEEAEC@ABE@CDG@CD@DE@ABBBE@@DEBAFG@KD@BE@CDADCCCBE@MECCIAGFMC@BABE@AAC@IGCAACGCACCBGCMAOIE@CBIAGCKIECC@CCEA@CBA@C@ACAAAJGDIBGFEFKFCAGE@IDOEEFIDCAACE@GEIBMDICAID@KM@GHCJ@VYCE@EDEHEJAAGA@CCFKHCH@FELC@ILEJAB@ECEGMIAEGAEICBCEKEBEBA@EDGCEBEFEBGG@AGOGAE@AACBAEGC@GDMGM@MFG@QBG@BACAE@ICCBACCAUFA@BCA@@ACD@EMA@CCEC@ACQCCCE@EEKACAEBCACBADMDCDGAECAEGAACECMCC@GE@CM@ECEGC@GAEHEBAAE@I@ACG@CAIBKACECCCAAGEACKEA@IBCDCBGEAAECACCAA@CD@@GC@ACC@E@AAADACABCADCC@BAO@IEG@GEBECCEAIE@CCAGGA@IIBCFCHCFEPDJEDCCIIGAAEA@AKIE@EFM@ACEACAG@CCGBEECAAA@ECEODCCIDADAJK@CDIB@DD@BDJBABABKBCLCBCFCD@HIH@DAFEBEFBD@FBBCDEL@RW@CDGRBDGLCDWAEACCGEDG@AEAAICE@C@C@AMCHA@A@@EBM@@BCBBJA@@GGB@BIDECGB@AAAEDAFA@AK@AB@AEA@AECB@GA@@EQGCEEBDDCBCCC@AAA@BBCB@D@@AAKH@BYHAAA@BDA@AAA@DHCBFHB@FHA@BBRVFALPTJ@AB@@DK@BDGJ@DF@I@@DG@BFC@@HIBB@ABC@MCALYG@B@FO@BJD@@DB@DTE@BJQBDNK@GFGDBHLHFFGBBBCBDFA@BD@HE@@GC@@BCBNHA@BD@DE@ABDBHEFBBB@DHBBHJ@XJ@BBBA@AAMFFDE@OCELBVABAFE@CFJAHEBDGBHDAFC@@DA@EBBBAFDBCDD@BA@@@FBBGDCAAABAOBEBCFGDCHECADBHADB@CD@LD@FCLAMHADEBADBFJF@DBBAD@FDL@FHDDFFBD@BLJFIJEBED@BGJAFDDCDCBEBKDQ@@@CBEDDHCCI@EA@CCAABABDFD@AB@BF@DBRAEHBDLDL@DAFDFCP@DDBFJDATCBADBDGJFDEFFF@DCBC@CDFHADCFEBAFC@CFBBDDFAD@@FAFB@GDADBD@BNHBB@DFBCFBNBBETDFFDAFBD@D@BAD@BDFF@@DJFD@BD@DHDLBNHJBBHLDDFNBJGJBFEFBBAH@DBBF@DBDADFD@F@DBDADBPCLCB@HCDCLADADBBDJHEBEFABAPEN@FFHBJ@DCFBF@F@DDDFFD@BDBADF@AFC@AHADABDDB@DATFBBBHLBBFDBBANDADCB@FABABFDD@@AFBDDDFHA@AD@FBDDDB"], "encodeOffsets": [[119693, 41781]] }, "properties": { "cp": [116.843352, 40.377362], "name": "密云区", "childNum": 1 } }, { "id": "110119", "type": "Feature", "geometry": { "type": "Polygon", "coordinates": ["@@F@FCHBFADBFEBCDCLCHGJDDI@KA@@GFADCPCCCAECABSACACACE@@ACABEFICEEAACBEDCACCAG@GGGACKEG@AACBCFEF@BAFBHCF@BAHHBCNABAD@AEDEFA@CCCRC@EF@@AH@BC@@BHH@JEBGJC@ABC@CF@BCD@HED@BATA@ICGECEBCBEBCCC@A@IAODGC@CAC@CAA@CCABCACC@AEBCA@FECCB@BA@CIEBICAGIAECAEFDEICAEEGG@CE@CCIKCACCGEAQA@EGIAGGCCCECGKKKFGDAH@FCB@BCDADBFAJBJFL@BEBABELEBEFADENI@KC@CCEAGIO@QCGBADC@ABKASBEDODAA@ABCCC@CGA@BC@BBO@OGM@IDC@CDA@CBGCCBE@IC@CIABAEAAAB@CCCBADCABBE@CD@DFAAHA@@BFBIACBC@CB@BC@@DDBCDDABBEHBDCDKDGAEDK@UEABEBKCKDEAIBKIC@CGG@IKMBIAAA@EDA@CBEJIDELCEEAAACAC@CCACD@EGCBECABCCC@CCCDABCCCBC@EFC@EDE@A@CCEEACD@CE@FAACFIACECBCB@AC@CEECAHABA@AB@ACBE@CBCAABAAAMIWNCAG@CAC@EFICBACA@EGEAB@FGDCCI@IECFADCDIBIAEBA@CAACCCBAAAK@CCI@EACBAAACG@AAGCEFEAABEACEE@CACBC@CEE@MCAEDAACCIJCFCDEAABCEA@ECAIAABBFDBCNABC@C@CCAABADCEACEBCFBHAGECEBCAGDC@CDE@AGEE@@AEAEBEAGBINAB@FGHC@@FIBMCMDKAEJEDC@AB@B@@G@GCEAI@CCACCCBAIEBCD@BEACA@ACCAEACBI@CGMAE@AFADEH@JC@AFCBEHABEAGBAAC@CGE@AECAEBCDA@E@EEA@AAEAGEGACADABKAEFCF@DAB@DCD@FIGAA@C@EEC@@CA@BC@CFIE@@IDABCEE@CCAEBAEA@AAC@CECBCFC@CJBBID@FGD@DCFBBADGA@FABBB@FGHAFA@@BDDBB@DBDMDAHEBADEBEA@BGH@BHDBDCDCBAFAFFFGLAHAB@DMDCDaCCDKA@BC@@DIA@DC@@BGC@@EBICCD@BD@@DCCE@ABF@@BG@@@H@GBH@@DE@@BF@@BG@HB@HA@@E@JI@@DMA@AC@CBA@@DEAAHE@AHC@@BB@FBAFO@EJCBGF@ACFA@@AC@CDEA@@BBC@@BBB@BFB@@ADBBADFACFB@CFBBD@FC@BA@ADDFD@@BABGCE@EF@HDHDBFF@HADDHHF@FGDGAKJGBgAAAAEMRJPADFBBHJPJJD@@FEFBDDBHAJDBBBDHJJBDHPJLFJ@HELBLCF@LDDHAJDF@FBDDPDHVFJBFDFCLADBH@HBDBBFJADBLADBFAHFDHDDBDJFHHDBBDDDDAR@RGNBHCNAHCDBJ@HCH@HC@CCENB@ADIDMHIBIFABBL@DBFABD@D@BRABHDDD@FJHF@BCBBBFBHHB@DDBCDDBC@ECEDCHFBBBARDLHPBJFL@HBBBBLDDTJFFTFB@BEF@^BFBBBCFONALABDDLDDDJBBDFFFJB@ABFFD@LADANCTAFB@FFLBLFH@FDH@JCDBDHFDJ@DFF@DJDADLJBHLDPL@DAD@FH@DDFCJFDD@JFHVLADEBBF@F@B@DJH@JAFJDDFHBDFLCDCF@@CDABCF@BEDCFA@KBCFE@ED@DCHFD@FAHBHIJELAHGDB@FCF@FAFJLHDD@DBL@HBFAL@BAJBNELBFDNCFBR@FBBDH@HDDDJAHDDAHDNEDQL@FCNBLAFDH@REHFHBHF"], "encodeOffsets": [[119261, 41752]] }, "properties": { "cp": [115.985006, 40.465325], "name": "延庆区", "childNum": 1 } }], "UTF8Encoding": true }
+
+                                        var myChart = echarts.init(document.getElementById('map'))
+
+                                        function _setOption(mapType, mapTitle, mapJson) {
+                                            echarts.registerMap(mapType, mapJson);
+                                            var option = {};
+                                            return option = {
+                                                geo: [{
+                                                    map: 'beijing',
+                                                    zoom: 1.2,
+                                                    itemStyle: {
+                                                        normal: {
+                                                            borderWidth: 3,
+                                                            borderColor: '#d9f5fc',
+                                                            shadowBlur: 50,
+                                                            shadowColor: 'rgba(0, 0, 0, 0.1)'
+                                                        }
+                                                    }
+                                                }],
+
+                                                visualMap: {
+                                                    min: 0,
+                                                    max: 10000,
+                                                    text:['High','Low'],
+                                                    realtime: false,
+                                                    calculable: false,
+                                                    show: false,
+                                                    inRange: {
+                                                        color: ['#ccfbff', '#8df4ff', '#76e7ff', '#30d4ff', '#37baff', '#4876FF', '#3A5FCD']
+                                                    }
+                                                },
+
+                                                series: [
+                                                    {
+                                                        type: 'map',
+                                                        zoom: 1.2,
+                                                        mapType: mapType,
+                                                        label: {//设置地图区域名的文本样式，例如地名的字体大小等
+                                                            normal: {
+                                                                show: false,
+                                                                textStyle: {
+                                                                    color: '#404e5b',
+                                                                    fontSize: 12,
+                                                                    fontWeight: 500,
+                                                                    fontFamily: 'Microsoft YaHei',
+                                                                    align: 'center'
+                                                                }
+                                                            },
+                                                            emphasis: {
+                                                                textStyle: {
+                                                                    color: '#000'
+                                                                }
+                                                            }
+                                                        },
+                                                        itemStyle: {//地图区域的多边形图形样式
+                                                            normal: {
+                                                                borderColor: '#fff',
+                                                                position: 'left',
+                                                                areaColor: '#d9f5fc',
+                                                                borderWidth: 1
+                                                            },
+                                                            emphasis: {
+                                                                areaColor: '#fc477b',
+                                                                borderWidth: 0
+                                                            }
+                                                        },
+                                                        data: [
+                                                            { name: '东城区', areaKey: '110101', value: 4901 },
+                                                            { name: '西城区', areaKey: '110102', value: 5182 },
+                                                            { name: '朝阳区', areaKey: '110105', value: 10000 },
+                                                            { name: '丰台区', areaKey: '110106', value: 2920 },
+                                                            { name: '石景山区', areaKey: '110107', value: 334 },
+                                                            { name: '海淀区', areaKey: '110108', value: 7777 },
+                                                            { name: '门头沟区', areaKey: '110109', value: 1096 },
+                                                            { name: '房山区', areaKey: '110111', value: 1681 },
+                                                            { name: '通州区', areaKey: '110112', value: 2417 },
+                                                            { name: '顺义区', areaKey: '110113', value: 2370 },
+                                                            { name: '昌平区', areaKey: '110114', value: 2143 },
+                                                            { name: '大兴区', areaKey: '110115', value: 3006 },
+                                                            { name: '怀柔区', areaKey: '110116', value: 1135 },
+                                                            { name: '平谷区', areaKey: '110117', value: 1857 },
+                                                            { name: '密云区', areaKey: '110228', value: 663 },
+                                                            { name: '延庆区', areaKey: '110229', value: 959 },
+                                                        ],
+                                                        animation: false// animationDurationUpdate: 1000,
+                                                        // animationEasingUpdate: 'quinticInOut'
+                                                    }
+                                                ]
+                                            };
+                                        }
+
+                                        var _option = _setOption('beijing', '北京', beijingJson);
+
+                                        myChart.setOption(_option);
+
+                                        myChart.on('click', function (params) {
+                                            var key = params.data.areaKey;
+                                            var url = "http://bj.12348.gov.cn/lawservice/lawservice?Xzqh="+key;
+                                            window.location.href= url;
+                                            // console.log(params.data.areaUrl);
+                                        });
+
+
+                                        myChart.on('mouseover', function (params) {
+                                            // setTimeout(function() {
+                                            if(params && params.data && params.data.areaKey){
+                                                var areaKey = params.data.areaKey;
+                                                setxzqhcount(areaKey);
+                                                if(isxzqh == ''){
+                                                    $('.wyc-box-right .box').addClass('sro');
+                                                    isxzqh = params.data.areaKey;
+                                                }
+                                            }
+                                            // }, 500);
+                                            // console.log('mouseover:', isxzqh)
+                                        });
+                                        myChart.on('mouseout', function () {
+                                            setAllCount();
+                                            if(isxzqh){
+                                                $('.wyc-box-right .box').removeClass('sro');
+                                                isxzqh = '';
+                                            }
+                                            // console.log('mouseout:', isxzqh)
+                                        });
+
+                                        $(window).load(function(){
+                                            //人员机构数量
+                                            $.ajax({
+                                                type : 'GET',
+                                                url : frontAppContext + "xzqhcount",
+                                                dataType: "json",
+                                                success : function(json) {
+                                                    if(json.status == '1'){
+                                                        xzqhcount = json;
+                                                    }
+                                                }
+                                            });
+                                        })
+
+                                        //鼠标滑动行政区划
+                                        function setxzqhcount(areaKey){
+                                            if(xzqhcount){
+                                                var mediatorType = xzqhcount.MediatorType;
+                                                var notaryType = xzqhcount.NotaryType;
+                                                var lawOfficeType = xzqhcount.LawOfficeType;
+                                                var notaryOfficeType = xzqhcount.NotaryOfficeType;
+                                                var jusicialOfficeType = xzqhcount.JusicialOfficeType;
+                                                var identifyOrgType = xzqhcount.IdentifyOrgType;
+                                                var legalAidAgencyType = xzqhcount.LegalAidAgencyType;
+                                                var mediationOrgType = xzqhcount.MediationOrgType;
+                                                var lawyerType = xzqhcount.LawyerType;
+                                                var identifyOrType = xzqhcount.IdentifyOrType;
+                                                var arbitryOrgType = xzqhcount.ArbitryOrgType;
+                                                if(arbitryOrgType){
+                                                    $.each(arbitryOrgType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#ArbitryOrgTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#ArbitryOrgTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(mediatorType){
+                                                    $.each(mediatorType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#MediatorTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#MediatorTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(notaryType){
+                                                    $.each(notaryType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#NotaryTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#NotaryTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(lawOfficeType){
+                                                    $.each(lawOfficeType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#LawOfficeTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#LawOfficeTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(notaryOfficeType){
+                                                    $.each(notaryOfficeType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#NotaryOfficeTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#NotaryOfficeTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(jusicialOfficeType){
+                                                    $.each(jusicialOfficeType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#JusicialOfficeTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#JusicialOfficeTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(identifyOrgType){
+                                                    $.each(identifyOrgType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#IdentifyOrgTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#IdentifyOrgTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(legalAidAgencyType){
+                                                    $.each(legalAidAgencyType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#LegalAidAgencyTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#LegalAidAgencyTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(mediationOrgType){
+                                                    $.each(mediationOrgType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#MediationOrgTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#MediationOrgTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(lawyerType){
+                                                    $.each(lawyerType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#LawyerTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#LawyerTypeNew").text(0)
+                                                    });
+                                                }
+                                                if(identifyOrType){
+                                                    $.each(identifyOrType,function(name,value) {
+                                                        if(value.xzqh == areaKey){
+                                                            $("#IdentifyOrTypeNew").text(value.count)
+                                                            return false;
+                                                        }
+                                                        $("#IdentifyOrTypeNew").text(0)
+
+                                                    });
+                                                }
+                                            }
+                                        }
+
+                                        //鼠标滑出地图
+                                        function setAllCount(){
+                                            //人员机构数量
+                                            $("#LawyerType").text(allcount.LawyerType)
+                                            $("#IdentifyOrType").text(allcount.IdentifyOrType)
+                                            $("#MediatorType").text(allcount.MediatorType)
+                                            $("#NotaryType").text(allcount.NotaryType)
+                                            $("#LawOfficeType").text(allcount.LawOfficeType)
+                                            $("#NotaryOfficeType").text(allcount.NotaryOfficeType)
+                                            $("#JusicialOfficeType").text(allcount.JusicialOfficeType)
+                                            $("#IdentifyOrgType").text(allcount.IdentifyOrgType)
+                                            $("#LegalAidAgencyType").text(allcount.LegalAidAgencyType)
+                                            $("#MediationOrgType").text(allcount.MediationOrgType)
+                                            $("#ArbitryOrgType").text(allcount.ArbitryOrgType)
+                                        }
+                                        $(document).ready(function(){
+                                            //咨询数据
+                                            $.ajax({
+                                                type : 'GET',
+                                                url : frontAppContext + "consult/initCount",
+                                                dataType: "json",
+                                                success : function(json) {
+                                                    $("#lineCount").text(json.OnlineCount);
+                                                    $("#robotCount").text(json.RobotCount);
+                                                    $("#ConsultCount").text(json.ConsultTotal);
+                                                    wywnum();
+                                                }
+                                            });
+
+                                            //人员机构数量
+                                            $.ajax({
+                                                type : 'GET',
+                                                url : frontAppContext + "lawservice/count",
+                                                dataType: "json",
+                                                success : function(json) {
+                                                    allcount = json;
+                                                    $("#LawyerType").text(json.LawyerType)
+                                                    $("#IdentifyOrType").text(json.IdentifyOrType)
+                                                    $("#MediatorType").text(json.MediatorType)
+                                                    $("#NotaryType").text(json.NotaryType)
+                                                    $("#LawOfficeType").text(json.LawOfficeType)
+                                                    $("#NotaryOfficeType").text(json.NotaryOfficeType)
+                                                    $("#JusicialOfficeType").text(json.JusicialOfficeType)
+                                                    $("#IdentifyOrgType").text(json.IdentifyOrgType)
+                                                    $("#LegalAidAgencyType").text(json.LegalAidAgencyType)
+                                                    $("#MediationOrgType").text(json.MediationOrgType)
+                                                    $("#ArbitryOrgType").text(json.ArbitryOrgType)
+
+                                                }
+                                            });
+
+                                            //咨询列表
+                                            $.ajax({
+                                                type : 'GET',
+                                                url : frontAppContext + "consult/listcount?Count=20",
+                                                dataType: "json",
+                                                success : function(json) {
+                                                    var _html = '';
+                                                    _html += '<div class="bd"><ul>';
+                                                    if(json.Status == 1){
+                                                        $.each(json.Data, function(index, val){
+                                                            var title = val.consulttitle;
+                                                            if(title.length>17){
+                                                                title = title.substring(0,17)+"...";
+                                                            }
+                                                            _html += '<li class="item">';
+                                                            _html += '  <a target= "_blank" href="http://bj.12348.gov.cn/lawservice/consult/detail?SiteID=122&ID='+val.id+'">';
+                                                            _html += '  <img src="/images/index/dot_15.png" alt="">';
+                                                            _html += '  <span title="'+val.consulttitle+'" class="txt">';
+                                                            _html += title;
+                                                            _html += '</span>';
+                                                            _html += ' <span class="date">';
+                                                            _html += val.consulttime;
+                                                            _html += ' </span>';
+                                                            _html += '</a>';
+                                                            _html += '</li>';
+                                                        })
+                                                    }
+                                                    _html += '</ul></div>';
+                                                    $("#ConsultList").append(_html);
+                                                    $("#ConsultList").slide({mainCell:".bd ul",autoPage:true,effect:"top",autoPlay:true,delayTime:700,vis:6});
+                                                }
+                                            });
+                                        });
+
+                                        function flushImage(){
+                                            $(".verify-code-img").attr("src",  "http://bj.12348.gov.cn/lawservice/authCode.zhtml?Height=21&Width=50"+ new Date().getTime())
+                                        }
+
+                                        function flushImage2(){
+                                            $(".verify-code-img2").attr("src",  "http://bj.12348.gov.cn/lawservice/authCode.zhtml?Height=21&Width=50"+ new Date().getTime())
+                                        }
+
+                                        function addComplaint(){
+                                            if(Membered.IsLogin){
+                                                $("#complaintaddbut").attr("disabled", true);
+                                                var realName=$("#ComplaintRealName").val();
+                                                if(!realName || realName.length ==0){
+                                                    $("#complaintaddbut").removeAttr("disabled")
+                                                    modal("姓名不能为空!");
+                                                    return;
+                                                }
+                                                var mobile=$("#Mobile").val();
+                                                if(!mobile || mobile.length ==0){
+                                                    $("#complaintaddbut").removeAttr("disabled")
+                                                    modal("手机号码不能为空!");
+                                                    return;
+                                                }
+                                                var AuthCode = $("#AuthCode").val();
+                                                if(!AuthCode || AuthCode.length ==0){
+                                                    $("#complaintaddbut").removeAttr("disabled")
+                                                    modal("验证码不能为空!");
+                                                    return;
+                                                }
+                                                $("#ComplaintRealName").addClass("disabled","true");
+                                                $("#Mobile").addClass("disabled","true");
+
+                                                var acontent=$("#Content").val();
+                                                if(!acontent || acontent.length ==0){
+                                                    $("#complaintaddbut").removeAttr("disabled")
+                                                    modal("评价内容不能为空!");
+                                                    return;
+                                                }
+                                                if(acontent.length>320){
+                                                    $("#complaintaddbut").removeAttr("disabled")
+                                                    modal("评价内容不能超过320个字!");
+                                                    return;
+                                                }
+                                                var dc = {"AuthCode":AuthCode,"ComplaintRealName":realName, "Content":acontent, "Mobile":mobile, "SiteID":122};
+
+                                                $.ajax({
+                                                    type : 'post',
+                                                    url : frontAppContext + "MemberComplaint.add",
+                                                    dataType: "json",
+                                                    data: dc,
+                                                    success : function(response) {
+                                                        if(response.status==1){
+                                                            modal("评价成功!");
+                                                            $("#Content").val("");
+                                                            $("#complaintaddbut").removeAttr("disabled");
+                                                            window.location.reload();
+                                                        }else{
+                                                            modal(response.message);
+                                                        }
+                                                        $("#complaintaddbut").removeAttr("disabled")
+
+                                                    }
+                                                });
+                                            } else {
+                                                return;
+                                            }
+                                        }
+
+                                        function lineConsultAdd(){
+                                            var lineCount = $("#lineCount").html();
+                                            //咨询列表
+                                            $.ajax({
+                                                type : 'GET',
+                                                url : frontAppContext + "consult.lineCountAdd",
+                                                dataType: "json",
+                                                success : function(response) {
+                                                    if(lineCount){
+                                                        $('#lineCount').text(parseInt(lineCount)+1);
+                                                        _MEIQIA('showPanel');
+                                                    }
+                                                }
+                                            });
+                                        }
+
+                                        function robotConsultAdd(){
+                                            var robotCount = $('#robotCount').html();
+                                            //咨询列表
+                                            $.ajax({
+                                                type : 'GET',
+                                                url : frontAppContext + "consult.robotCountAdd",
+                                                dataType: "json",
+                                                success : function(response) {
+                                                    if(robotCount){
+                                                        $('#robotCount').text(parseInt(robotCount)+1);
+                                                    }
+                                                }
+                                            });
+                                        }
+
+                                        // ===== start 数字滚动 ====
+                                        // 我要问
+                                        var wyw_num = true;
+                                        function wywnum(){
+                                            if(wyw_num){
+                                                $('.wyw-box-right-top .box h2').css({display: 'inline-block'});
+
+                                                // 我要问
+                                                var num =  $(".wyw-box-right-top .box h2");
+                                                for (var i = 0 ; i < num.length ; i++ ) {
+                                                    numBulse($(num[i]),$(num[i]).text().replace(/[^0-9]/ig, ""), 90);
+                                                }
+                                                wyw_num = false;
+                                            }
+                                        }
+                                        // 我要查
+                                        $(window).load(function () {
+                                            if ($(".wyc-box-right-top").offset().top >= $(window).scrollTop() && $(".wyc-box-right-top").offset().top < ($(window).scrollTop()+$(window).height())- $(".wyc-box-right-top").height()/2) {
+                                                numFun();
+                                            }
+                                        })
+                                        var scro = true;
+                                        $(window).scroll(function () {
+                                            if(scro){
+                                                if ($(".wyc-box-right-top").offset().top >= $(window).scrollTop() && $(".wyc-box-right-top").offset().top < ($(window).scrollTop()+$(window).height())- $(".wyc-box-right-top").height()/2) {
+                                                    numFun();
+                                                    scro = false;
+                                                }
+                                            }
+                                        })
+
+                                        function numFun(){
+                                            var num =  $(".box-con .num");
+                                            for (var i = 0 ; i < num.length ; i++ ) {
+                                                numBulse($(num[i]),$(num[i]).text().replace(/[^0-9]/ig, ""), 90);
+                                            }
+                                        }
+
+                                        function numBulse(cls,length,time) {
+                                            var timer = '';
+                                            var temp = 0;
+                                            var i = length / 10;
+                                            timer = setInterval(function () {
+                                                temp = parseInt(temp += i);
+                                                cls.text(temp);
+                                                if (temp >= length ){
+                                                    cls.text(length);
+                                                    clearInterval(timer);
+                                                    return;
+                                                };
+                                                if(i<1) {
+                                                    cls.text(length);
+                                                    clearInterval(timer);
+                                                    return;
+                                                }
+                                            },time);
+                                        }
+
+                                        $('#check_orgper').find('li').on('click', function () {
+                                            var contentType = '';
+                                            if("ls"==this.id){
+                                                $("#ViewTypeHead").val('person')
+                                                $("#QueryHead").attr('placeholder','请输入律师姓名')
+                                                contentType = 'LawyerType'
+                                            }else{
+                                                $("#ViewTypeHead").val('')
+                                                if("lsoffic"==this.id){
+                                                    $("#QueryHead").attr('placeholder','请输入律师事务所名称')
+                                                    contentType = 'LawOfficeType'
+                                                }else if("gzc"==this.id){
+                                                    $("#QueryHead").attr('placeholder','请输入公证处名称')
+                                                    contentType = 'NotaryOfficeType'
+                                                }else if("flyz"==this.id){
+                                                    $("#QueryHead").attr('placeholder','请输入法律援助机构名称')
+                                                    contentType = 'LegalAidAgencyType'
+                                                }else if("rmtj"==this.id){
+                                                    $("#QueryHead").attr('placeholder','请输入人民调解组织名称')
+                                                    contentType = 'MediationOrgType'
+                                                }else if("sfjd"==this.id){
+                                                    $("#QueryHead").attr('placeholder','请输入司法鉴定机构名称')
+                                                    contentType = 'IdentifyOrgType'
+                                                }else if("jcsf"==this.id){
+                                                    $("#QueryHead").attr('placeholder','请输入基层司法所名称')
+                                                    contentType = 'JusicialOfficeType'
+                                                }else if("gzy"==this.id){
+                                                    $("#ViewTypeHead").val('person')
+                                                    $("#QueryHead").attr('placeholder','请输入公证员姓名')
+                                                    contentType = 'NotaryType'
+                                                }else if("sfjdr"==this.id){
+                                                    $("#ViewTypeHead").val('person')
+                                                    $("#QueryHead").attr('placeholder','请输入司法鉴定人姓名')
+                                                    contentType = 'IdentifyOrType'
+                                                }else if("rmtjy"==this.id){
+                                                    $("#ViewTypeHead").val('person')
+                                                    $("#QueryHead").attr('placeholder','请输入人民调解员姓名')
+                                                    contentType = 'MediatorType'
+                                                }
+
+                                            }
+                                            $("#ContentTypeHead").val(contentType)
+                                        });
+                                        $(function(){
+                                            if($(".main").offset().left > 0 && $(".main").offset().left > 60){
+                                                $(".aside-l").css("left",$(".main").offset().left-80);
+                                                $(".aside-r").css("right",$(".main").offset().left-80)
+                                            }
+                                            // console.log($(".main").offset().left)
+                                        })
+                                        function headsearch(){
+                                            $("#form_search").submit();
+                                        }
+
+                                        function videoService(){
+                                            //alert("该模块正在进行中。。。")
+                                        }
+
+                                        function judicialComment(){
+                                            if(Membered.IsLogin){
+                                                var url = "http://bj.12348.gov.cn/lawservice/judicial/comment?SiteID=122";
+                                                window.location.href= url;
+                                            }else{
+                                                $('.mask').show();
+                                                $('.alertBox-eval').show();
+                                            }
+                                        }
+
+                                        function checkAuthCode(){
+                                            var AuthCode = $("#AuthCode2").val();
+                                            if(!AuthCode || AuthCode.length ==0){
+                                                modal("验证码不能为空!");
+                                                return;
+                                            }
+                                            var dc = {"AuthCode":AuthCode};
+                                            $.ajax({
+                                                type : 'post',
+                                                url : frontAppContext + "judicial/checkAuthCode",
+                                                dataType: "json",
+                                                data: dc,
+                                                success : function(response) {
+                                                    if(response.status==1){
+                                                        var url = "http://bj.12348.gov.cn/lawservice/judicial/comment?SiteID=122";
+                                                        window.location.href= url;
+                                                    }else{
+                                                        flushImage2();
+                                                        modal(response.message);
+                                                    }
+                                                }
+                                            });
+                                        }
+                                        // ===== end数字滚动 ====
+
+
+                                        function toComment(){
+                                            var url = "http://bj.12348.gov.cn/lawservice/judicial/comment?SiteID=122";
+                                            window.location.href= url;
+                                        }
+                                    </script>
+
+                                    <script src="http://bj.12348.gov.cn/lawservice/stat/front/stat.js" type="text/javascript"></script>
+                                    <script>
+                                        if(window._zcms_stat)_zcms_stat("SiteID=122&Dest=http://bj.12348.gov.cn/lawservice/stat/dealer");
+                                    </script>
+
+                                    <!-- App=ZCMS(北京法律服务网) 2.4.27530,CostTime=33,PublishDate=2019-09-10 15:47:53 -->
+</body>
+</html>
